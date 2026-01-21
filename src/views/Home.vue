@@ -186,20 +186,28 @@
                   />
                 </div>
                 <div class="p-3 sm:p-4 text-white">
-                  <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
-                    Villa, Kemah Tinggi
-                  </h3>
+                  <div class="flex gap-3 justify-between">
+                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                      Villa, Kemah Tinggi
+                    </h3>
+                    <div
+                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                    >
+                      $990
+                    </div>
+                  </div>
                   <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
                     Flat for sale
                   </p>
-                  <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span>🛏 2 Beds</span>
+                  <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                    <span class="flex">
+                      <iconify-icon
+                        icon="material-symbols:bed-outline-rounded"
+                        style="font-size: 20px; padding-right: 5px"
+                      ></iconify-icon
+                      >2 Bedrooms</span
+                    >
                     <span>📐 214m²</span>
-                  </div>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
                   </div>
                 </div>
               </div>
@@ -216,20 +224,28 @@
                   />
                 </div>
                 <div class="p-3 sm:p-4 text-white">
-                  <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
-                    Banani Duplex Villa
-                  </h3>
+                  <div class="flex gap-3 justify-between">
+                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                      Banani Duplex Villa
+                    </h3>
+                    <div
+                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                    >
+                      $990
+                    </div>
+                  </div>
                   <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
                     Flat for sale
                   </p>
                   <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span>🛏 2 Beds</span>
+                    <span class="flex">
+                      <iconify-icon
+                        icon="material-symbols:bed-outline-rounded"
+                        style="font-size: 20px; padding-right: 5px"
+                      ></iconify-icon
+                      >2 Bedrooms</span
+                    >
                     <span>📐 214m²</span>
-                  </div>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
                   </div>
                 </div>
               </div>
@@ -246,20 +262,28 @@
                   />
                 </div>
                 <div class="p-3 sm:p-4 text-white">
-                  <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
-                    Banani Duplex Villa
-                  </h3>
+                  <div class="flex gap-3 justify-between">
+                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                      Banani Duplex Villa
+                    </h3>
+                    <div
+                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                    >
+                      $990
+                    </div>
+                  </div>
                   <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
                     Flat for sale
                   </p>
                   <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span>🛏 2 Beds</span>
+                    <span class="flex">
+                      <iconify-icon
+                        icon="material-symbols:bed-outline-rounded"
+                        style="font-size: 20px; padding-right: 5px"
+                      ></iconify-icon
+                      >2 Bedrooms</span
+                    >
                     <span>📐 214m²</span>
-                  </div>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
                   </div>
                 </div>
               </div>
@@ -276,20 +300,29 @@
                   />
                 </div>
                 <div class="p-3 sm:p-4 text-white">
-                  <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
-                    Banani Duplex Villa
-                  </h3>
+                  <div class="flex gap-3 justify-between">
+                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                      Banani Duplex Villa
+                    </h3>
+                    <div
+                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                    >
+                      $990
+                    </div>
+                  </div>
+
                   <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
                     Flat for sale
                   </p>
                   <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span>🛏 2 Beds</span>
+                    <span class="flex">
+                      <iconify-icon
+                        icon="material-symbols:bed-outline-rounded"
+                        style="font-size: 20px; padding-right: 5px"
+                      ></iconify-icon
+                      >2 Bedrooms</span
+                    >
                     <span>📐 214m²</span>
-                  </div>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
                   </div>
                 </div>
               </div>
@@ -1563,24 +1596,19 @@
     <section
       class="grid grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-6 pt-20 md:px-32 2xl:w-full"
       style="
-        background-image: url('/public/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg');
+        background-image: url('/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg');
       "
     >
       <div class="col-span-3">
-        <h2 class="font-extrabold montserrat leading-tight">
-          <div
-            class="text-sm sm:text-lg lg:text-xl bg-gradient-to-r from-[#ACFFCB] via-[#9FE6D7] to-[#85A4D5] bg-clip-text text-transparent tracking-wider"
-          >
-            SERENO
-          </div>
-          <div
-            class="text-sm sm:text-lg lg:text-xl bg-gradient-to-r from-[#ACFFCB] via-[#9FE6D7] to-[#85A4D5] bg-clip-text text-transparent tracking-wide"
-          >
-            LEVANDE
-          </div>
+        <h2
+          class="text-xl sm:text-lg md:text-xl lg:text-xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
+        >
+          SERENO
+          <br />
+          GRANDE
         </h2>
 
-        <p class="text-xl py-3 text-white">
+        <p class="text-lg py-3 text-white">
           Your trusted partner for finding safe, <br />verified, and professional housing
           solutions worldwide.
         </p>
