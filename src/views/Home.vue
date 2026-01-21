@@ -1635,7 +1635,7 @@
       </div>
       <div class="">
         <h3
-          class="sm:text-lg md:text-xl lg:text-2xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
+          class="sm:text-m md:text-lg lg:text-lg font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
         >
           Quick Links
         </h3>
@@ -1645,7 +1645,7 @@
       </div>
       <div class="col-span-2">
         <h3
-          class="sm:text-lg md:text-xl lg:text-2xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
+          class="sm:text-m md:text-lg lg:text-lg font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
         >
           Contact Us
         </h3>
