@@ -1,0 +1,189 @@
+   <template>
+  <div class="bg-black">
+    <!-- Hero Section with Two Columns -->
+    <div class="flex flex-col gap-6 md:flex-row">
+      <!-- Left Section -->
+      <div class="w-full md:w-1/2">
+        <section class="w-full bg-black flex items-start justify-center">
+          <div class="relative w-full max-w-6xl">
+            <!-- Left Overlay Content -->
+            <div class="absolute inset-0 z-20">
+              <!-- Menu Logo -->
+              <div class="pointer-events-auto absolute left-3 top-14">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12">
+                  <path fill="white" d="M3 8V7h17v1zm17 4v1H3v-1zM3 17h17v1H3z" />
+                </svg>
+              </div>
+              
+              <!-- Main Logo -->
+              <div class="pointer-events-auto absolute left-36 top-14 -translate-x-1/2">
+                <div class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent">
+                  <div class="text-xl font-extrabold poppins tracking-wider">SERENO</div>
+                  <div class="text-xl font-extrabold poppins tracking-wide">LEVANDE</div>
+                </div>
+              </div>
+
+              <!-- Center Content -->
+              <div class="pointer-events-auto flex h-full w-full flex-col items-center justify-center space-y-4 pr-12">
+                <h1 class="w-full max-w-[300px] text-center text-4xl font-extrabold leading-tight text-white lg:max-w-[600px] lg:text-6xl montserrat">
+                  Elevating Homes Into Destinations
+                </h1>
+                <button class="w-full max-w-[243px] rounded-lg bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] p-3 text-lg font-semibold text-black hover:opacity-90">
+                  Book Your Stay
+                </button>
+              </div>
+            </div>
+
+            <!-- Video Background -->
+            <div class="relative bg-[#f2f2f0] overflow-hidden">
+              <div class="absolute inset-0 z-10 bg-black opacity-30"></div>
+              <div class="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-72 bg-black rounded-b-[28px] z-10"></div>
+              <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 h-12 w-72 bg-black rounded-t-[28px] z-10"></div>
+              <div class="relative w-full h-[447px] md:h-[600px] aspect-[16/9] overflow-hidden bg-black">
+                <video class="h-full w-full object-cover object-top bg-black" autoplay muted loop playsinline>
+                  <source src="/video/Video_1.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Section -->
+      <div class="w-full md:w-1/2">
+        <section class="w-full bg-black flex items-start justify-center">
+          <div class="relative w-full max-w-6xl">
+            <!-- Right Overlay Content -->
+            <div class="absolute inset-0 z-20">
+              <!-- Sign Up Buttons -->
+              <div class="pointer-events-auto absolute top-14 z-50 flex items-end gap-3 right-8">
+                <button class="w-[202px] rounded-lg bg-white p-3 text-lg font-semibold hover:bg-gray-100 transition">
+                  <span class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent">Sign Up as Tenant</span>
+                </button>
+                <button class="w-[202px] rounded-lg bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] p-3 text-lg font-semibold text-black hover:opacity-90 transition">
+                  Sign Up as Landlord
+                </button>
+              </div>
+
+              <!-- Search Bar -->
+              <div class="absolute inset-0 flex items-center justify-center px-4">
+                <div class="flex w-full max-w-[366px] items-center rounded-lg bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] px-4 py-2 gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 flex-shrink-0 text-black">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                  </svg>
+                  <input type="text" placeholder="Search" class="w-full border-none bg-transparent text-black placeholder-black outline-none placeholder:font-medium" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Background -->
+            <div class="relative bg-[#f2f2f0] overflow-hidden">
+              <div class="absolute inset-0 z-10 bg-black opacity-30"></div>
+              <div class="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-72 bg-black rounded-b-[28px] z-10"></div>
+              <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 h-12 w-72 bg-black rounded-t-[28px] z-10"></div>
+              <div class="relative w-full h-[447px] md:h-[600px] aspect-[16/9] overflow-hidden bg-black">
+                <video class="h-full w-full object-cover object-top bg-black" autoplay muted loop playsinline>
+                  <source src="/video/Video_2.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- container -->
+    <div class="w-[1664] h-[5305] border-red-300 m-16">
+      <div class="w-[1664] h-[618] grid grid-cols-2 gap-8">
+        <div
+          class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent content-center m-12"
+        >
+          <h2 class="text-5xl font-extrabold montserrat mb-6">
+            Crafting Value Beyond Walls
+          </h2>
+          <p class="text-white mr-10">
+            We believe every property holds a quiet radiance cemented into its very
+            structure. Through gentle upscaling and meticulous care, we draw out that
+            hidden brilliance, allowing the space to unfold into an unforgettable
+            living experience.
+          </p>
+          <button
+            class="w-[243px] h-[52px] bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black rounded-lg mt-6"
+          >
+            Book Your Stay
+          </button>
+        </div>
+
+        <div class="right-grid w-[729px] h-[566px] grid grid-cols-2 grid-rows-2 gap-3">
+          <div class="grid-item-large col-span-2 overflow-hidden">
+            <img
+              class="w-[729px] h-[271px] object-cover rounded-lg"
+              src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM.jpeg"
+              alt="frame"
+            />
+          </div>
+
+          <div class="overflow-hidden">
+            <img
+              class="w-[352px] h-[271px] object-cover rounded-lg"
+              src="/public/images/WhatsApp Image 2026-01-19 at 12.36.08 PM.jpeg"
+            />
+          </div>
+          <div class="overflow-hidden">
+            <img
+              class="w-[352px] h-[271px] object-cover rounded-lg"
+              src="/public/images/WhatsApp Image 2026-01-19 at 12.36.07 PM (3).jpeg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-16 w-[1664px] h-[568px] bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+      >
+        <h2 class="text-5xl font-extrabold montserrat justify-self-center">
+          Property Highlights
+        </h2>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap");
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.frame {
+  width: 948px;
+  height: 592px;
+  overflow: hidden;
+
+  clip-path: polygon(
+    0% 0%,
+    35% 0%,
+    30% 0%,
+    33% 5%,
+    65% 5%,
+    68% 0%,
+    65% 0%,
+    100% 0%,
+    100% 100%,
+    38% 100%,
+    72% 100%,
+    69% 96%,
+    35% 96%,
+    32% 101%,
+    35% 100%,
+    0% 100%
+  );
+}
+
+.frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
