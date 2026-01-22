@@ -3,8 +3,10 @@
     class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
     style="background-image: url('/images/Landing_Page.png')"
   >
-    <div class="flex flex-col lg:flex-row gap-0 lg:gap-[2rem]">
-      <div class="relative frame w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[492px]">
+    <div class="flex flex-col lg:flex-row gap-0 lg:gap-[2rem] px-0">
+      <div
+        class="relative frame w-full lg:w-1/2 h-[250px] xs:h-[300px] sm:h-[400px] lg:h-[492px]"
+      >
         <video autoplay muted loop playsinline class="w-full h-full">
           <source src="/video/Video_1.mp4" type="video/mp4" />
         </video>
@@ -49,7 +51,9 @@
       </div>
 
       <!-- right one -->
-      <div class="relative frame w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[492px]">
+      <div
+        class="relative frame w-full lg:w-1/2 h-[250px] xs:h-[300px] sm:h-[400px] lg:h-[492px]"
+      >
         <video autoplay muted loop playsinline class="w-full h-full">
           <source src="/video/Video_2.mp4" type="video/mp4" />
         </video>
@@ -129,22 +133,22 @@
           </button>
         </div>
 
-        <div class="w-full grid grid-cols-2 grid-rows-2 gap-2 sm:gap-3">
-          <div class="col-span-2 overflow-hidden rounded-lg">
+        <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+          <div class="col-span-1 lg:col-span-2 overflow-hidden rounded-lg">
             <img
-              class="w-full h-[120px] sm:h-[160px] md:h-[200px] lg:h-[271px] object-cover"
+              class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[200px] lg:h-[271px] object-cover"
               src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM.jpeg"
             />
           </div>
           <div class="overflow-hidden rounded-lg">
             <img
-              class="w-full h-[120px] sm:h-[160px] md:h-[200px] lg:h-[130px] object-cover"
+              class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[200px] lg:h-[130px] object-cover"
               src="/images/WhatsApp Image 2026-01-19 at 12.36.08 PM.jpeg"
             />
           </div>
           <div class="overflow-hidden rounded-lg">
             <img
-              class="w-full h-[120px] sm:h-[160px] md:h-[200px] lg:h-[130px] object-cover"
+              class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[200px] lg:h-[130px] object-cover"
               src="/images/WhatsApp Image 2026-01-19 at 12.36.07 PM (3).jpeg"
             />
           </div>
@@ -152,8 +156,7 @@
       </div>
 
       <!-- Property Section -->
-      <!-- <div class="w-full py-2 sm:py-16 lg:py-20"> -->
-      <div class="w-full">
+      <div class="w-full mt-[10rem]">
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 sm:mb-12"
           style="padding-bottom: 5px"
@@ -173,21 +176,23 @@
             <!-- Cards -->
             <div
               class="flex gap-7 sm:gap-4 lg:gap-6 overflow-x-auto px-4 sm:px-6 lg:px-8 py-4 scrollbar-hide"
+              style="height: 330px"
             >
               <!-- Card 1 -->
               <div
-                class="flex-shrink-0 w-[200px] sm:w-[240px] lg:w-[260px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
               >
-                <div class="h-[150px] sm:h-[180px] lg:h-[220px] overflow-hidden">
+                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                   <img
                     src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
                     class="w-full h-full object-cover"
                     alt="Villa"
                   />
                 </div>
-                <div class="p-3 sm:p-4 text-white">
+                <!-- <div class="p-3 sm:p-4 text-white"> -->
+                <div class="p-2 text-white">
                   <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
                       Villa, Kemah Tinggi
                     </h3>
                     <div
@@ -214,18 +219,18 @@
 
               <!-- Card 2 -->
               <div
-                class="flex-shrink-0 w-[200px] sm:w-[240px] lg:w-[260px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
               >
-                <div class="h-[150px] sm:h-[180px] lg:h-[220px] overflow-hidden">
+                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                   <img
                     src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
                     class="w-full h-full object-cover"
                     alt="Villa"
                   />
                 </div>
-                <div class="p-3 sm:p-4 text-white">
+                <div class="p-2 text-white">
                   <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
                       Banani Duplex Villa
                     </h3>
                     <div
@@ -252,18 +257,18 @@
 
               <!-- Card 3 -->
               <div
-                class="flex-shrink-0 w-[200px] sm:w-[240px] lg:w-[260px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
               >
-                <div class="h-[150px] sm:h-[180px] lg:h-[220px] overflow-hidden">
+                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                   <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM.jpeg"
+                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
                     class="w-full h-full object-cover"
                     alt="Villa"
                   />
                 </div>
-                <div class="p-3 sm:p-4 text-white">
+                <div class="p-2 text-white">
                   <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
                       Banani Duplex Villa
                     </h3>
                     <div
@@ -290,18 +295,18 @@
 
               <!-- Card 4 -->
               <div
-                class="flex-shrink-0 w-[200px] sm:w-[240px] lg:w-[260px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
               >
-                <div class="h-[150px] sm:h-[180px] lg:h-[220px] overflow-hidden">
+                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                   <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
+                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
                     class="w-full h-full object-cover"
                     alt="Villa"
                   />
                 </div>
-                <div class="p-3 sm:p-4 text-white">
+                <div class="p-2 text-white">
                   <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-base lg:text-lg">
+                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
                       Banani Duplex Villa
                     </h3>
                     <div
@@ -310,7 +315,44 @@
                       $990
                     </div>
                   </div>
+                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
+                    Flat for sale
+                  </p>
+                  <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
+                    <span class="flex">
+                      <iconify-icon
+                        icon="material-symbols:bed-outline-rounded"
+                        style="font-size: 20px; padding-right: 5px"
+                      ></iconify-icon
+                      >2 Bedrooms</span
+                    >
+                    <span>📐 214m²</span>
+                  </div>
+                </div>
+              </div>
 
+              <!-- card 5 -->
+              <div
+                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+              >
+                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                  <img
+                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
+                    class="w-full h-full object-cover"
+                    alt="Villa"
+                  />
+                </div>
+                <div class="p-2 text-white">
+                  <div class="flex gap-3 justify-between">
+                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                      Banani Duplex Villa
+                    </h3>
+                    <div
+                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                    >
+                      $990
+                    </div>
+                  </div>
                   <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
                     Flat for sale
                   </p>
@@ -337,213 +379,6 @@
         </div>
       </div>
 
-      // ...existing code...
-
-      <!-- Property Section -->
-      <div class="w-full">
-        <h2
-          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 sm:mb-12"
-          style="padding-bottom: 5px"
-        >
-          Property Highlights
-        </h2>
-
-        <div class="w-full pb-[60px]">
-          <!-- Wrapper -->
-          <!-- <div class="relative w-full max-w-[1400px] mx-auto px-16 flex items-center justify-center overflow-visible"> -->
-          <div
-            class="relative w-full max-w-[1500px] mx-auto flex items-center justify-center"
-          ></div>
-          <!-- Left Arrow -->
-          <button
-            class="absolute left-0 -translate-x-full top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-          >
-            ❮
-          </button>
-
-          <!-- Cards Container -->
-          <div class="flex gap-6 px-6">
-            <!-- Card 1 (Side Small) -->
-            <div
-              class="flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[240px] scale-95 opacity-90"
-            >
-              <div
-                class="relative h-[160px] sm:h-[190px] lg:h-[220px] overflow-hidden bg-gray-800 rounded-xl"
-              >
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
-                >
-                  $990
-                </div>
-                <button
-                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
-                >
-                  ♥
-                </button>
-              </div>
-              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
-                <h3 class="text-white text-sm font-semibold truncate">
-                  Villa, Kemah Tinggi
-                </h3>
-                <p class="text-gray-300 text-xs">Flat for sale</p>
-                <div class="flex gap-2 text-xs text-gray-300 mt-1">
-                  <span>🛏️ 2 bed</span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="flex-shrink-0 w-[200px] sm:w-[230px] lg:w-[260px]">
-              <div
-                class="relative h-[190px] sm:h-[230px] lg:h-[270px] overflow-hidden bg-gray-800 rounded-xl"
-              >
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
-                >
-                  $990
-                </div>
-                <button
-                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
-                >
-                  ♥
-                </button>
-              </div>
-              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
-                <h3 class="text-white text-sm font-semibold truncate">
-                  Banani Duplex Villa
-                </h3>
-                <p class="text-gray-300 text-xs">Flat for sale</p>
-                <div class="flex gap-2 text-xs text-gray-300 mt-1">
-                  <span>🛏️ 2 bed</span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="flex-shrink-0 w-[200px] sm:w-[230px] lg:w-[260px]">
-              <div
-                class="relative h-[190px] sm:h-[230px] lg:h-[270px] overflow-hidden bg-gray-800 rounded-xl"
-              >
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM.jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
-                >
-                  $990
-                </div>
-                <button
-                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
-                >
-                  ♥
-                </button>
-              </div>
-              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
-                <h3 class="text-white text-sm font-semibold truncate">
-                  Banani Duplex Villa
-                </h3>
-                <p class="text-gray-300 text-xs">Flat for sale</p>
-                <div class="flex gap-2 text-xs text-gray-300 mt-1">
-                  <span>🛏️ 2 bed</span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="flex-shrink-0 w-[200px] sm:w-[230px] lg:w-[260px]">
-              <div
-                class="relative h-[190px] sm:h-[230px] lg:h-[270px] overflow-hidden bg-gray-800 rounded-xl"
-              >
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
-                >
-                  $990
-                </div>
-                <button
-                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
-                >
-                  ♥
-                </button>
-              </div>
-              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
-                <h3 class="text-white text-sm font-semibold truncate">
-                  Banani Duplex Villa
-                </h3>
-                <p class="text-gray-300 text-xs">Flat for sale</p>
-                <div class="flex gap-2 text-xs text-gray-300 mt-1">
-                  <span>🛏️ 2 bed</span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 5 (Side Small) -->
-            <div
-              class="flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[240px] scale-95 opacity-90"
-            >
-              <div
-                class="relative h-[160px] sm:h-[190px] lg:h-[220px] overflow-hidden bg-gray-800 rounded-xl"
-              >
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-                <div
-                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
-                >
-                  $990
-                </div>
-                <button
-                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
-                >
-                  ♥
-                </button>
-              </div>
-              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
-                <h3 class="text-white text-sm font-semibold truncate">
-                  Villa, Kemah Tinggi
-                </h3>
-                <p class="text-gray-300 text-xs">Flat for sale</p>
-                <div class="flex gap-2 text-xs text-gray-300 mt-1">
-                  <span>🛏️ 2 bed</span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Arrow -->
-          <button
-            class="absolute right-0 translate-x-full top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-          >
-            ❯
-          </button>
-        </div>
-      </div>
-
-      // ...existing code...
-
       <!-- What's New Section -->
       <section
         class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 py-12 sm:py-16 lg:py-20"
@@ -561,33 +396,39 @@
         </div>
 
         <div
-          class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
+          class="lg:col-span-2 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"
         >
           <!-- cards 1-->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
+          <div
+            class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
+          >
             <div class="relative">
               <img
                 src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
+                class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
               />
               <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
+                class="absolute -bottom-2 xs:-bottom-3 text-[8px] xs:text-[10px] font-semibold bg-[#B8FBE1] text-black px-2 xs:px-3 py-0.5 xs:py-1 rounded-full flex items-center gap-1 shadow-md"
               >
                 ✦ POPULAR
               </span>
             </div>
 
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
+            <div
+              class="pt-4 xs:pt-6 pb-3 xs:pb-4 px-3 xs:px-4 text-white space-y-2 xs:space-y-3"
+            >
               <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
+                <p class="text-sm xs:text-base sm:text-lg font-semibold">
+                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
+                    /month</span
+                  >
                 </p>
 
                 <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
+                  class="w-6 xs:w-8 h-6 xs:h-8 rounded-full bg-white flex items-center justify-center"
                 >
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
@@ -602,16 +443,18 @@
                 </div>
               </div>
 
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
+              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
 
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
+              <p class="text-[10px] xs:text-xs text-white/60">
+                24 Green Corner, Dhanmondi, Dhaka
+              </p>
 
               <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
+                class="border-t border-white/10 pt-2 xs:pt-3 flex justify-between text-[9px] xs:text-[11px] text-white/70"
               >
                 <div class="flex items-center gap-1">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -628,7 +471,7 @@
 
                 <div class="flex items-center gap-1">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -640,12 +483,12 @@
                       d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
                     />
                   </svg>
-                  2 Bathrooms
+                  2 Bath
                 </div>
 
-                <div class="flex items-center gap-1">
+                <div class="flex items-center gap-1 hidden xs:flex">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -657,38 +500,44 @@
                       d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
                     />
                   </svg>
-                  5x7 m²
+                  5x7
                 </div>
               </div>
             </div>
           </div>
 
           <!-- cards 2 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
+          <div
+            class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
+          >
             <div class="relative">
               <img
                 src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
+                class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
               />
 
               <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
+                class="absolute -bottom-2 xs:-bottom-3 text-[8px] xs:text-[10px] font-semibold bg-[#B8FBE1] text-black px-2 xs:px-3 py-0.5 xs:py-1 rounded-full flex items-center gap-1 shadow-md"
               >
                 ✦ POPULAR
               </span>
             </div>
 
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
+            <div
+              class="pt-4 xs:pt-6 pb-3 xs:pb-4 px-3 xs:px-4 text-white space-y-2 xs:space-y-3"
+            >
               <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
+                <p class="text-sm xs:text-base sm:text-lg font-semibold">
+                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
+                    /month</span
+                  >
                 </p>
 
                 <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
+                  class="w-6 xs:w-8 h-6 xs:h-8 rounded-full bg-white flex items-center justify-center"
                 >
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
@@ -703,16 +552,18 @@
                 </div>
               </div>
 
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
+              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
 
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
+              <p class="text-[10px] xs:text-xs text-white/60">
+                24 Green Corner, Dhanmondi, Dhaka
+              </p>
 
               <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
+                class="border-t border-white/10 pt-2 xs:pt-3 flex justify-between text-[9px] xs:text-[11px] text-white/70"
               >
                 <div class="flex items-center gap-1">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -729,7 +580,7 @@
 
                 <div class="flex items-center gap-1">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -741,12 +592,12 @@
                       d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
                     />
                   </svg>
-                  2 Bathrooms
+                  2 Bath
                 </div>
 
-                <div class="flex items-center gap-1">
+                <div class="flex items-center gap-1 hidden xs:flex">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -758,38 +609,44 @@
                       d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
                     />
                   </svg>
-                  5x7 m²
+                  5x7
                 </div>
               </div>
             </div>
           </div>
 
           <!-- cards 3 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
+          <div
+            class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
+          >
             <div class="relative">
               <img
                 src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
+                class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
               />
 
               <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
+                class="absolute -bottom-2 xs:-bottom-3 text-[8px] xs:text-[10px] font-semibold bg-[#B8FBE1] text-black px-2 xs:px-3 py-0.5 xs:py-1 rounded-full flex items-center gap-1 shadow-md"
               >
                 ✦ POPULAR
               </span>
             </div>
 
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
+            <div
+              class="pt-4 xs:pt-6 pb-3 xs:pb-4 px-3 xs:px-4 text-white space-y-2 xs:space-y-3"
+            >
               <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
+                <p class="text-sm xs:text-base sm:text-lg font-semibold">
+                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
+                    /month</span
+                  >
                 </p>
 
                 <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
+                  class="w-6 xs:w-8 h-6 xs:h-8 rounded-full bg-white flex items-center justify-center"
                 >
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
@@ -804,16 +661,18 @@
                 </div>
               </div>
 
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
+              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
 
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
+              <p class="text-[10px] xs:text-xs text-white/60">
+                24 Green Corner, Dhanmondi, Dhaka
+              </p>
 
               <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
+                class="border-t border-white/10 pt-2 xs:pt-3 flex justify-between text-[9px] xs:text-[11px] text-white/70"
               >
                 <div class="flex items-center gap-1">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -830,7 +689,7 @@
 
                 <div class="flex items-center gap-1">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -842,12 +701,12 @@
                       d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
                     />
                   </svg>
-                  2 Bathrooms
+                  2 Bath
                 </div>
 
-                <div class="flex items-center gap-1">
+                <div class="flex items-center gap-1 hidden xs:flex">
                   <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
+                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="1.5"
@@ -859,7 +718,7 @@
                       d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
                     />
                   </svg>
-                  5x7 m²
+                  5x7
                 </div>
               </div>
             </div>
@@ -1375,6 +1234,7 @@
           Browse Category Listing
         </button>
       </div>
+
       <!-- tenant facilities -->
       <section class="w-full grid grid-cols-1 lg:grid-cols-3 gap-10 py-16">
         <div class="lg:col-span-2">
@@ -1390,15 +1250,19 @@
           and modern comfort.
         </div>
 
-        <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-          <div class="space-y-10 text-white text-2xl">
+        <div
+          class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 items-start"
+        >
+          <div class="space-y-6 lg:space-y-10 text-white text-lg sm:text-xl lg:text-2xl">
             <div>Daily<br />Housekeeping</div>
             <div>Breakfast<br />Inclusive</div>
             <div>Coffee & Tea<br />Station</div>
             <div>Toiletries & Spa<br />Amenities</div>
           </div>
 
-          <div class="space-y-10 text-white text-m leading-relaxed">
+          <div
+            class="space-y-6 lg:space-y-10 text-white text-sm sm:text-base leading-relaxed"
+          >
             <div>
               Daily housekeeping ensures your home stays spotless, comfortable, and
               effortlessly maintained.
@@ -1411,16 +1275,17 @@
             <div>Premium toiletries and spa amenities for a relaxing experience.</div>
           </div>
 
-          <div class="flex justify-end">
+          <div
+            class="flex justify-center md:justify-start lg:justify-end w-full md:col-span-2 lg:col-span-1 lg:col-start-3"
+          >
             <img
               src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM.jpeg"
-              class="w-[380px] h-[400px] object-cover rounded-2xl"
+              class="w-full max-w-[380px] h-auto sm:h-[300px] md:h-[400px] object-cover rounded-2xl"
             />
           </div>
         </div>
       </section>
 
-      <!-- about us -->
       <!-- Testimonials Section -->
       <section class="w-full py-16">
         <div class="flex items-start justify-between mb-12">
@@ -1673,7 +1538,6 @@
       </section>
 
       <!-- asked quesiton -->
-
       <section class="w-full py-12 sm:py-16 lg:py-20">
         <!-- Header -->
         <div class="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -1798,27 +1662,28 @@
         </div>
       </section>
     </div>
+
     <!-- footer section -->
     <section
-      class="grid grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-6 pt-20 md:px-32 2xl:w-full"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-4 sm:px-6 md:px-8 lg:px-12 pt-20 w-full overflow-hidden"
       style="
         background-image: url('/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg');
       "
     >
-      <div class="col-span-3">
+      <div class="col-span-1 sm:col-span-2 lg:col-span-3">
         <h2
-          class="text-xl sm:text-lg md:text-xl lg:text-xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
+          class="text-lg sm:text-xl md:text-xl lg:text-xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
         >
           SERENO
           <br />
           GRANDE
         </h2>
 
-        <p class="text-lg py-3 text-white">
-          Your trusted partner for finding safe, <br />verified, and professional housing
+        <p class="text-sm sm:text-base md:text-lg py-3 text-white">
+          Your trusted partner for finding safe, verified, and professional housing
           solutions worldwide.
         </p>
-        <div class="flex items-center gap-4 pt-0 md:pt-4">
+        <div class="flex items-center gap-4 pt-0 md:pt-4 flex-wrap">
           <a href="#"
             ><iconify-icon icon="logos:facebook" style="font-size: 30px"></iconify-icon>
           </a>
@@ -1839,53 +1704,57 @@
           ></a>
         </div>
       </div>
-      <div class="">
+      <div class="col-span-1 sm:col-span-1 lg:col-span-1">
         <h3
-          class="sm:text-m md:text-lg lg:text-lg font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
+          class="text-sm sm:text-base md:text-lg lg:text-lg font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
         >
           Quick Links
         </h3>
-        <p class="text-white text-xl py-3">About Us</p>
-        <p class="text-white text-xl py-3">How It Works</p>
-        <p class="text-white text-xl py-3">FAQ</p>
+        <p class="text-white text-sm sm:text-base py-2 sm:py-3">About Us</p>
+        <p class="text-white text-sm sm:text-base py-2 sm:py-3">How It Works</p>
+        <p class="text-white text-sm sm:text-base py-2 sm:py-3">FAQ</p>
       </div>
-      <div class="col-span-2">
+      <div class="col-span-1 sm:col-span-2 lg:col-span-2">
         <h3
-          class="sm:text-m md:text-lg lg:text-lg font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
+          class="text-sm sm:text-base md:text-lg lg:text-lg font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent pb-2"
         >
           Contact Us
         </h3>
-        <p class="text-white text-xl py-3 flex gap-2 items-center">
+        <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
           <iconify-icon
             icon="mdi:map-marker"
-            style="color: #acffcb; font-size: 24px"
+            style="color: #acffcb; font-size: 20px"
           ></iconify-icon>
-          House 123, Road 45, Gulshan 2, Dhaka 1212
+          <span class="break-words">House 123, Road 45, Gulshan 2, Dhaka 1212</span>
         </p>
-        <p class="text-white text-xl py-3 flex gap-2 items-center">
+        <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
           <iconify-icon
             icon="mingcute:phone-fill"
-            style="color: #acffcb; font-size: 24px; align-items: center"
+            style="color: #acffcb; font-size: 20px; align-items: center"
           ></iconify-icon
           >+880 1234-567890
         </p>
-        <p class="text-white text-xl py-3 flex gap-2 items-center">
+        <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
           <iconify-icon
             icon="clarity:email-solid"
-            style="color: #acffcb; font-size: 24px"
+            style="color: #acffcb; font-size: 20px"
           ></iconify-icon
           >info@serenobd.com
         </p>
       </div>
-      <hr class="col-span-6 mb-8 border-white border-opacity-15" />
-      <div class="col-span-3">
+      <hr
+        class="col-span-1 sm:col-span-2 lg:col-span-6 mb-8 border-white border-opacity-15"
+      />
+      <div class="col-span-1 sm:col-span-2 lg:col-span-3">
         <p
-          class="font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+          class="text-xs sm:text-sm font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
         >
           © 2025. All rights Reserved.
         </p>
       </div>
-      <div class="col-span-3 items-center justify-evenly flex">
+      <div
+        class="col-span-1 sm:col-span-2 lg:col-span-3 items-center justify-evenly flex"
+      >
         <ul class="flex items-center gap-6 text-white">
           <li>
             <a class="group relative inline-block text-[14px] no-underline" href="#"
