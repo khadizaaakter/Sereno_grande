@@ -1,104 +1,127 @@
+<script setup>
+import { ref } from "vue";
+
+const slider = ref(null);
+
+function slideLeft() {
+  slider.value.scrollBy({ left: -300, behavior: "smooth" });
+}
+
+function slideRight() {
+  slider.value.scrollBy({ left: 300, behavior: "smooth" });
+}
+</script>
+
 <template>
   <div
     class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
     style="background-image: url('/images/Landing_Page.png')"
   >
-    <div class="flex flex-col lg:flex-row gap-0 lg:gap-[2rem] px-0">
+    <div
+      class="w-full flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 px-3 sm:px-6 lg:px-0"
+    >
+      <!-- LEFT FRAME -->
       <div
-        class="relative frame w-full lg:w-1/2 h-[250px] xs:h-[300px] sm:h-[400px] lg:h-[492px]"
+        class="relative frame w-full lg:w-1/2 h-[220px] sm:h-[320px] md:h-[380px] lg:h-[460px] xl:h-[520px]"
       >
-        <video autoplay muted loop playsinline class="w-full h-full">
+        <video autoplay muted loop playsinline>
           <source src="/video/Video_1.mp4" type="video/mp4" />
         </video>
-        <div class="absolute inset-0 bg-[#0E1B01]/30 z-[1]"></div>
 
+        <!-- overlay shade -->
+        <div class="absolute inset-0 bg-[#0E1B01]/40"></div>
+
+        <!-- overlay content -->
         <div
-          class="absolute inset-0 flex flex-col px-4 sm:px-8 lg:px-12 py-6 sm:py-10 lg:py-12 z-10 pointer-events-none justify-center items-center"
+          class="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-8 lg:px-12"
         >
+          <!-- Logo -->
           <div
-            class="flex items-center gap-3 pointer-events-auto absolute top-6 sm:top-10 lg:top-12 left-4 sm:left-8 lg:left-12"
+            class="absolute top-4 sm:top-6 lg:top-10 left-4 sm:left-8 lg:left-12 flex items-center gap-3"
           >
-            <div class="w-[30px] sm:w-[36px] h-[20px] sm:h-[24px] text-white">
+            <div class="w-7 sm:w-9 h-5 sm:h-6 text-white">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M3 8V7h17v1zm17 4v1H3v-1zM3 17h17v1H3z" />
               </svg>
             </div>
+
             <div
               class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
             >
-              <div class="text-sm sm:text-lg lg:text-xl font-extrabold tracking-wider">
-                SERENO
-              </div>
-              <div class="text-sm sm:text-lg lg:text-xl font-extrabold tracking-wide">
-                GRANDE
-              </div>
+              <div class="text-sm sm:text-lg lg:text-xl font-extrabold">SERENO</div>
+              <div class="text-sm sm:text-lg lg:text-xl font-extrabold">GRANDE</div>
             </div>
           </div>
 
-          <div class="flex flex-col items-center gap-4">
-            <h1
-              class="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white leading-tight text-center pointer-events-auto"
-            >
-              Elevating Homes<br />Into Destinations
-            </h1>
-            <button
-              class="text-xs sm:text-sm w-[160px] sm:w-[200px] h-[36px] sm:h-[40px] rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black pointer-events-auto hover:shadow-lg transition"
-            >
-              Book Your Stay
-            </button>
-          </div>
+          <!-- center text -->
+          <h1
+            class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight"
+          >
+            Elevating Homes<br />Into Destinations
+          </h1>
+
+          <button
+            class="mt-4 sm:mt-6 text-xs sm:text-sm w-[150px] sm:w-[190px] lg:w-[210px] h-[34px] sm:h-[40px] rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+          >
+            Book Your Stay
+          </button>
         </div>
       </div>
 
-      <!-- right one -->
+      <!-- RIGHT FRAME -->
       <div
-        class="relative frame w-full lg:w-1/2 h-[250px] xs:h-[300px] sm:h-[400px] lg:h-[492px]"
+        class="relative frame w-full lg:w-1/2 h-[220px] sm:h-[320px] md:h-[380px] lg:h-[460px] xl:h-[520px]"
       >
-        <video autoplay muted loop playsinline class="w-full h-full">
+        <video autoplay muted loop playsinline>
           <source src="/video/Video_2.mp4" type="video/mp4" />
         </video>
-        <div class="absolute inset-0 bg-[#0E1B01]/30 z-[1]"></div>
 
+        <!-- overlay shade -->
+        <div class="absolute inset-0 bg-[#0E1B01]/40"></div>
+
+        <!-- overlay content -->
         <div
-          class="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 lg:p-10 z-[10]"
+          class="absolute inset-0 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-10"
         >
-          <!-- Buttons -->
+          <!-- top buttons -->
           <div
-            class="flex flex-col sm:flex-row justify-end gap-2 sm:gap-4 absolute top-4 sm:top-6 lg:top-10 right-4 sm:right-6 lg:right-10 w-full sm:w-auto"
+            class="absolute top-4 sm:top-6 lg:top-10 right-4 sm:right-6 lg:right-10 flex flex-col sm:flex-row gap-2 sm:gap-4"
           >
             <button
-              class="tenant px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent border border-white/20"
+              class="px-3 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent border border-white/30"
             >
               Sign Up as Tenant
             </button>
+
             <button
-              class="text-xs sm:text-sm w-full sm:w-[180px] lg:w-[200px] h-[36px] sm:h-[40px] rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+              class="w-[160px] sm:w-[180px] lg:w-[200px] h-[34px] sm:h-[40px] rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
             >
               Sign Up as Landlord
             </button>
           </div>
 
-          <!-- Search Bar -->
-          <div class="flex justify-center w-full">
-            <div class="relative w-full sm:w-[340px] lg:w-[420px]">
+          <!-- search -->
+          <div class="w-full flex justify-center mt-8 sm:mt-0">
+            <div class="relative w-full sm:w-[320px] md:w-[380px] lg:w-[420px]">
               <input
                 type="text"
                 placeholder="Search"
-                class="w-full px-3 sm:px-4 lg:px-14 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] outline-none focus:outline-none focus:ring-0 text-black placeholder-black"
+                class="w-full px-4 pl-10 sm:pl-12 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black placeholder-black outline-none"
               />
+
               <svg
-                class="absolute left-3 sm:left-4 lg:left-5 top-1/2 -translate-y-1/2 w-5 h-5 sm:w-6 sm:h-6 text-black"
+                class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-5 h-5 sm:w-6 sm:h-6 text-black"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
-                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-                  <path
-                    d="M11 17a6 6 0 1 0 0-12a6 6 0 0 0 0 12m0 2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"
-                  />
-                  <path
-                    d="M15.32 15.29a1 1 0 0 1 1.414.005l3.975 4a1 1 0 0 1-1.418 1.41l-3.975-4a1 1 0 0 1 .004-1.414Z"
-                  />
-                </g>
+                <path
+                  fill="currentColor"
+                  d="M11 17a6 6 0 1 0 0-12a6 6 0 0 0 0 12m0 2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"
+                />
+                <path
+                  fill="currentColor"
+                  d="M15.32 15.29a1 1 0 0 1 1.414.005l3.975 4a1 1 0 0 1-1.418 1.41l-3.975-4a1 1 0 0 1 .004-1.414Z"
+                />
               </svg>
             </div>
           </div>
@@ -107,9 +130,12 @@
     </div>
 
     <!-- Main Container -->
-    <div class="w-full px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 mx-auto max-w-7xl">
+    <div class="w-full px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10 mx-auto max-w-7xl">
       <!-- Crafting Value Section -->
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 pt-40">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-24 sm:pt-32 lg:pt-40"
+      >
+        <!-- LEFT TEXT -->
         <div
           class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent flex flex-col justify-center"
         >
@@ -118,37 +144,45 @@
           >
             Crafting Value Beyond Walls
           </h2>
+
           <p
-            class="text-white mb-4 sm:mb-6 text-xs sm:text-sm md:text-base leading-relaxed"
+            class="text-white mb-5 sm:mb-6 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl"
           >
             We believe every property holds a quiet radiance cemented into its very
             structure. Through gentle upscaling and meticulous care, we draw out that
             hidden brilliance, allowing the space to unfold into an unforgettable living
             experience.
           </p>
+
           <button
-            class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+            class="text-xs sm:text-sm w-[150px] sm:w-[170px] lg:w-[200px] h-[34px] sm:h-[38px] lg:h-[42px] rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
           >
             Book Your Stay
           </button>
         </div>
 
-        <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-          <div class="col-span-1 lg:col-span-2 overflow-hidden rounded-lg">
+        <!-- RIGHT IMAGE GRID -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
+          <!-- TOP LARGE IMAGE -->
+          <div class="col-span-1 sm:col-span-2 overflow-hidden rounded-xl">
             <img
-              class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[200px] lg:h-[271px] object-cover"
+              class="w-full h-[160px] sm:h-[200px] md:h-[240px] lg:h-[270px] xl:h-[300px] object-cover hover:scale-105 transition duration-500"
               src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM.jpeg"
             />
           </div>
-          <div class="overflow-hidden rounded-lg">
+
+          <!-- BOTTOM LEFT -->
+          <div class="overflow-hidden rounded-xl">
             <img
-              class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[200px] lg:h-[130px] object-cover"
+              class="w-full h-[140px] sm:h-[170px] md:h-[200px] lg:h-[150px] xl:h-[170px] object-cover hover:scale-105 transition duration-500"
               src="/images/WhatsApp Image 2026-01-19 at 12.36.08 PM.jpeg"
             />
           </div>
-          <div class="overflow-hidden rounded-lg">
+
+          <!-- BOTTOM RIGHT -->
+          <div class="overflow-hidden rounded-xl">
             <img
-              class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[200px] lg:h-[130px] object-cover"
+              class="w-full h-[140px] sm:h-[170px] md:h-[200px] lg:h-[150px] xl:h-[170px] object-cover hover:scale-105 transition duration-500"
               src="/images/WhatsApp Image 2026-01-19 at 12.36.07 PM (3).jpeg"
             />
           </div>
@@ -156,228 +190,241 @@
       </div>
 
       <!-- Property Section -->
-      <div class="w-full mt-[10rem]">
+      <section class="w-full mt-24 sm:mt-32 lg:mt-40">
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 sm:mb-12"
-          style="padding-bottom: 5px"
         >
           Property Highlights
         </h2>
 
-        <div class="w-full" style="padding-bottom: 60px">
-          <div class="relative flex items-center justify-center group">
-            <!-- Left Arrow -->
-            <button
-              class="absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-            >
-              ❮
-            </button>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Left Button -->
+          <button
+            @click="slideLeft"
+            class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ❮
+          </button>
 
-            <!-- Cards -->
+          <!-- Slider -->
+          <div
+            ref="slider"
+            class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4"
+          >
             <div
-              class="flex gap-7 sm:gap-4 lg:gap-6 overflow-x-auto px-4 sm:px-6 lg:px-8 py-4 scrollbar-hide"
-              style="height: 330px"
+              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
             >
-              <!-- Card 1 -->
-              <div
-                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-              >
-                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                  <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                    class="w-full h-full object-cover"
-                    alt="Villa"
-                  />
-                </div>
-                <!-- <div class="p-3 sm:p-4 text-white"> -->
-                <div class="p-2 text-white">
-                  <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                      Villa, Kemah Tinggi
-                    </h3>
-                    <div
-                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                    >
-                      $990
-                    </div>
-                  </div>
-                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
-                    Flat for sale
-                  </p>
-                  <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                    <span class="flex">
-                      <iconify-icon
-                        icon="material-symbols:bed-outline-rounded"
-                        style="font-size: 20px; padding-right: 5px"
-                      ></iconify-icon
-                      >2 Bedrooms</span
-                    >
-                    <span>📐 214m²</span>
-                  </div>
-                </div>
+              <!-- Image -->
+              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
               </div>
 
-              <!-- Card 2 -->
-              <div
-                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-              >
-                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                  <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
-                    class="w-full h-full object-cover"
-                    alt="Villa"
-                  />
-                </div>
-                <div class="p-2 text-white">
-                  <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                      Banani Duplex Villa
-                    </h3>
-                    <div
-                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                    >
-                      $990
-                    </div>
-                  </div>
-                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
-                    Flat for sale
-                  </p>
-                  <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span class="flex">
-                      <iconify-icon
-                        icon="material-symbols:bed-outline-rounded"
-                        style="font-size: 20px; padding-right: 5px"
-                      ></iconify-icon
-                      >2 Bedrooms</span
-                    >
-                    <span>📐 214m²</span>
+              <!-- Content -->
+              <div class="p-2 text-white">
+                <div class="flex gap-3 justify-between">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                    Villa, Kemah Tinggi
+                  </h3>
+                  <div
+                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                  >
+                    $990
                   </div>
                 </div>
-              </div>
 
-              <!-- Card 3 -->
-              <div
-                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-              >
-                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                  <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
-                    class="w-full h-full object-cover"
-                    alt="Villa"
-                  />
-                </div>
-                <div class="p-2 text-white">
-                  <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                      Banani Duplex Villa
-                    </h3>
-                    <div
-                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                    >
-                      $990
-                    </div>
-                  </div>
-                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
-                    Flat for sale
-                  </p>
-                  <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span class="flex">
-                      <iconify-icon
-                        icon="material-symbols:bed-outline-rounded"
-                        style="font-size: 20px; padding-right: 5px"
-                      ></iconify-icon
-                      >2 Bedrooms</span
-                    >
-                    <span>📐 214m²</span>
-                  </div>
-                </div>
-              </div>
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
 
-              <!-- Card 4 -->
-              <div
-                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-              >
-                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                  <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
-                    class="w-full h-full object-cover"
-                    alt="Villa"
-                  />
-                </div>
-                <div class="p-2 text-white">
-                  <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                      Banani Duplex Villa
-                    </h3>
-                    <div
-                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                    >
-                      $990
-                    </div>
-                  </div>
-                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
-                    Flat for sale
-                  </p>
-                  <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span class="flex">
-                      <iconify-icon
-                        icon="material-symbols:bed-outline-rounded"
-                        style="font-size: 20px; padding-right: 5px"
-                      ></iconify-icon
-                      >2 Bedrooms</span
-                    >
-                    <span>📐 214m²</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- card 5 -->
-              <div
-                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-              >
-                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                  <img
-                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
-                    class="w-full h-full object-cover"
-                    alt="Villa"
-                  />
-                </div>
-                <div class="p-2 text-white">
-                  <div class="flex gap-3 justify-between">
-                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                      Banani Duplex Villa
-                    </h3>
-                    <div
-                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                    >
-                      $990
-                    </div>
-                  </div>
-                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
-                    Flat for sale
-                  </p>
-                  <div class="flex justify-between text-xs sm:text-sm text-gray-300 mb-2">
-                    <span class="flex">
-                      <iconify-icon
-                        icon="material-symbols:bed-outline-rounded"
-                        style="font-size: 20px; padding-right: 5px"
-                      ></iconify-icon
-                      >2 Bedrooms</span
-                    >
-                    <span>📐 214m²</span>
-                  </div>
+                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon
+                      icon="material-symbols:bed-outline-rounded"
+                      style="font-size: 20px"
+                    ></iconify-icon>
+                    2 Bedrooms
+                  </span>
+                  <span>📐 214m²</span>
                 </div>
               </div>
             </div>
-            <!-- Right Arrow -->
-            <button
-              class="absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+
+            <!-- Card 2 -->
+            <div
+              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
             >
-              ❯
-            </button>
+              <!-- Image -->
+              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="p-2 text-white">
+                <div class="flex gap-3 justify-between">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                    Villa, Kemah Tinggi
+                  </h3>
+                  <div
+                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                  >
+                    $990
+                  </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
+
+                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon
+                      icon="material-symbols:bed-outline-rounded"
+                      style="font-size: 20px"
+                    ></iconify-icon>
+                    2 Bedrooms
+                  </span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+            >
+              <!-- Image -->
+              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="p-2 text-white">
+                <div class="flex gap-3 justify-between">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                    Villa, Kemah Tinggi
+                  </h3>
+                  <div
+                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                  >
+                    $990
+                  </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
+
+                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon
+                      icon="material-symbols:bed-outline-rounded"
+                      style="font-size: 20px"
+                    ></iconify-icon>
+                    2 Bedrooms
+                  </span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- card  -->
+            <div
+              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+            >
+              <!-- Image -->
+              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="p-2 text-white">
+                <div class="flex gap-3 justify-between">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                    Villa, Kemah Tinggi
+                  </h3>
+                  <div
+                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                  >
+                    $990
+                  </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
+
+                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon
+                      icon="material-symbols:bed-outline-rounded"
+                      style="font-size: 20px"
+                    ></iconify-icon>
+                    2 Bedrooms
+                  </span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- card -->
+            <div
+              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+            >
+              <!-- Image -->
+              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="p-2 text-white">
+                <div class="flex gap-3 justify-between">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                    Villa, Kemah Tinggi
+                  </h3>
+                  <div
+                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                  >
+                    $990
+                  </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
+
+                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                  <span class="flex items-center gap-1">
+                    <iconify-icon
+                      icon="material-symbols:bed-outline-rounded"
+                      style="font-size: 20px"
+                    ></iconify-icon>
+                    2 Bedrooms
+                  </span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Right Button -->
+          <button
+            @click="slideRight"
+            class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ❯
+          </button>
         </div>
-      </div>
+      </section>
 
       <!-- What's New Section -->
       <section
@@ -1225,76 +1272,107 @@
           </div>
         </div>
       </section>
-      <div
+
+      <!-- browser listing section -->
+      <section
         class="items-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent flex flex-col justify-center"
       >
         <button
-          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] m-16 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] my-8 sm:my-12 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
         >
           Browse Category Listing
         </button>
-      </div>
+      </section>
 
-      <!-- tenant facilities -->
-      <section class="w-full grid grid-cols-1 lg:grid-cols-3 gap-10 py-16">
-        <div class="lg:col-span-2">
+      <!-- Tenant Facilities Section -->
+      <section class="w-full px-4 sm:px-6 lg:px-16 py-16">
+        <!-- Heading -->
+        <div class="mb-10 lg:mb-16 text-center lg:text-left">
           <h2
-            class="text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+            class="text-4xl sm:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
           >
             Tenant Facilities
           </h2>
+          <p class="text-white text-sm sm:text-base mt-4 max-w-xl mx-auto lg:mx-0">
+            Thoughtfully curated facilities that ensure tenants enjoy convenience,
+            security, and modern comfort.
+          </p>
         </div>
 
-        <div class="text-white text-sm lg:text-base leading-relaxed flex items-start">
-          Thoughtfully curated facilities that ensure tenants enjoy convenience, security,
-          and modern comfort.
-        </div>
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+          <!-- Titles Column (Desktop) / Facility Stacks (Mobile) -->
+          <div class="lg:col-span-1 flex flex-col lg:space-y-10 space-y-6">
+            <!-- Facility 1 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Daily Housekeeping
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Daily housekeeping ensures your home stays spotless, comfortable, and
+                effortlessly maintained.
+              </p>
+            </div>
 
-        <div
-          class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 items-start"
-        >
-          <div class="space-y-6 lg:space-y-10 text-white text-lg sm:text-xl lg:text-2xl">
-            <div>Daily<br />Housekeeping</div>
-            <div>Breakfast<br />Inclusive</div>
-            <div>Coffee & Tea<br />Station</div>
-            <div>Toiletries & Spa<br />Amenities</div>
+            <!-- Facility 2 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Breakfast Inclusive
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Breakfast is included every morning, offering fresh and nourishing meals
+                to start your day right.
+              </p>
+            </div>
+
+            <!-- Facility 3 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Coffee & Tea Station
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Enjoy complimentary coffee and tea station available at all times.
+              </p>
+            </div>
+
+            <!-- Facility 4 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Toiletries & Spa Amenities
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Premium toiletries and spa amenities for a relaxing experience.
+              </p>
+            </div>
           </div>
 
+          <!-- Image Column -->
           <div
-            class="space-y-6 lg:space-y-10 text-white text-sm sm:text-base leading-relaxed"
-          >
-            <div>
-              Daily housekeeping ensures your home stays spotless, comfortable, and
-              effortlessly maintained.
-            </div>
-            <div>
-              Breakfast is included every morning, offering fresh and nourishing meals to
-              start your day right.
-            </div>
-            <div>Enjoy complimentary coffee and tea station available at all times.</div>
-            <div>Premium toiletries and spa amenities for a relaxing experience.</div>
-          </div>
-
-          <div
-            class="flex justify-center md:justify-start lg:justify-end w-full md:col-span-2 lg:col-span-1 lg:col-start-3"
+            class="w-full flex justify-center lg:justify-end mt-10 lg:mt-0 lg:col-span-2"
           >
             <img
               src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM.jpeg"
               class="w-full max-w-[380px] h-auto sm:h-[300px] md:h-[400px] object-cover rounded-2xl"
+              alt="Tenant Facilities"
             />
           </div>
         </div>
       </section>
 
       <!-- Testimonials Section -->
-      <section class="w-full py-16">
-        <div class="flex items-start justify-between mb-12">
+      <section class="w-full py-16 px-4 sm:px-6 lg:px-16">
+        <!-- Heading & Arrows -->
+        <div
+          class="flex flex-col lg:flex-row items-start justify-between mb-12 gap-6 lg:gap-0"
+        >
           <h2
-            class="text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent max-w-[650px]"
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent max-w-full lg:max-w-[650px]"
           >
             What Do Our Clients Say About Us
           </h2>
-          <div class="flex gap-4">
+
+          <!-- Navigation Buttons -->
+          <div class="flex gap-4 lg:mt-0">
             <button class="rounded-full bg-white p-3 transition-colors hover:bg-white/80">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1333,207 +1411,152 @@
         </div>
 
         <!-- Testimonials Carousel -->
-        <div class="overflow-hidden">
-          <div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-            <!-- Testimonial Card 1 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-03.webp"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
-                </div>
+        <div
+          class="overflow-x-auto scroll-smooth flex gap-6 pb-4 scrollbar-hide snap-x snap-mandatory"
+        >
+          <!-- Testimonial Card  -->
+          <div
+            class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <iconify-icon
+                icon="ri:double-quotes-r"
+                style="color: #acffcb; font-size: 25px"
+              ></iconify-icon>
+              <div class="flex gap-1">
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
               </div>
             </div>
-
-            <!-- 02 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-03.jpg"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 03 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-02.jpg"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 04 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-03.webp"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
+            <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
+              The property exceeded all expectations! From the thoughtful design to the
+              seamless check-in process, everything was perfect. Highly recommend for
+              anyone looking for quality accommodation.
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div>
+                <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
+                <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
+                  <img
+                    src="/images/pro-03.webp"
+                    alt="Profile"
+                    class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
+                  />
+                  <span>Dhaka, Bangladesh</span>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- card -->
+          <div
+            class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <iconify-icon
+                icon="ri:double-quotes-r"
+                style="color: #acffcb; font-size: 25px"
+              ></iconify-icon>
+              <div class="flex gap-1">
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+              </div>
+            </div>
+            <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
+              The property exceeded all expectations! From the thoughtful design to the
+              seamless check-in process, everything was perfect. Highly recommend for
+              anyone looking for quality accommodation.
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div>
+                <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
+                <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
+                  <img
+                    src="/images/pro-03.webp"
+                    alt="Profile"
+                    class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
+                  />
+                  <span>Dhaka, Bangladesh</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div
+            class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <iconify-icon
+                icon="ri:double-quotes-r"
+                style="color: #acffcb; font-size: 25px"
+              ></iconify-icon>
+              <div class="flex gap-1">
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+              </div>
+            </div>
+            <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
+              Excellent stay! Staff was super friendly and the location is perfect. Very
+              comfortable and clean property.
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div>
+                <p class="text-sm font-semibold leading-tight text-white">Jane Doe</p>
+                <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
+                  <img
+                    src="/images/pro-02.jpg"
+                    alt="Profile"
+                    class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
+                  />
+                  <span>Chittagong, Bangladesh</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more cards as needed -->
         </div>
       </section>
 
@@ -1783,25 +1806,20 @@
 .montserrat {
   font-family: "Montserrat", sans-serif;
 }
-
 .frame {
   overflow: hidden;
   clip-path: polygon(
     0% 0%,
-    35% 0%,
-    30% 0%,
-    33% 5%,
-    65% 5%,
+    32% 0%,
+    36% 6%,
+    64% 6%,
     68% 0%,
-    65% 0%,
     100% 0%,
     100% 100%,
-    38% 100%,
-    72% 100%,
-    69% 96%,
-    35% 96%,
-    32% 101%,
-    35% 100%,
+    68% 100%,
+    64% 94%,
+    36% 94%,
+    32% 100%,
     0% 100%
   );
 }
