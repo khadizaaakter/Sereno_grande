@@ -165,7 +165,7 @@
           <div class="relative flex items-center justify-center group">
             <!-- Left Arrow -->
             <button
-              class="absolute -left-2 sm:-left-4 lg:-left-8 z-20 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/40 transition opacity-0 group-hover:opacity-100"
+              class="absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
             >
               ❮
             </button>
@@ -327,16 +327,222 @@
                 </div>
               </div>
             </div>
-
             <!-- Right Arrow -->
             <button
-              class="absolute -right-2 sm:-right-4 lg:-right-8 z-20 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/40 transition opacity-0 group-hover:opacity-100"
+              class="absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
             >
               ❯
             </button>
           </div>
         </div>
       </div>
+
+      // ...existing code...
+
+      <!-- Property Section -->
+      <div class="w-full">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 sm:mb-12"
+          style="padding-bottom: 5px"
+        >
+          Property Highlights
+        </h2>
+
+        <div class="w-full pb-[60px]">
+          <!-- Wrapper -->
+          <!-- <div class="relative w-full max-w-[1400px] mx-auto px-16 flex items-center justify-center overflow-visible"> -->
+          <div
+            class="relative w-full max-w-[1500px] mx-auto flex items-center justify-center"
+          ></div>
+          <!-- Left Arrow -->
+          <button
+            class="absolute left-0 -translate-x-full top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ❮
+          </button>
+
+          <!-- Cards Container -->
+          <div class="flex gap-6 px-6">
+            <!-- Card 1 (Side Small) -->
+            <div
+              class="flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[240px] scale-95 opacity-90"
+            >
+              <div
+                class="relative h-[160px] sm:h-[190px] lg:h-[220px] overflow-hidden bg-gray-800 rounded-xl"
+              >
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
+                >
+                  $990
+                </div>
+                <button
+                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
+                >
+                  ♥
+                </button>
+              </div>
+              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
+                <h3 class="text-white text-sm font-semibold truncate">
+                  Villa, Kemah Tinggi
+                </h3>
+                <p class="text-gray-300 text-xs">Flat for sale</p>
+                <div class="flex gap-2 text-xs text-gray-300 mt-1">
+                  <span>🛏️ 2 bed</span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flex-shrink-0 w-[200px] sm:w-[230px] lg:w-[260px]">
+              <div
+                class="relative h-[190px] sm:h-[230px] lg:h-[270px] overflow-hidden bg-gray-800 rounded-xl"
+              >
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
+                >
+                  $990
+                </div>
+                <button
+                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
+                >
+                  ♥
+                </button>
+              </div>
+              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
+                <h3 class="text-white text-sm font-semibold truncate">
+                  Banani Duplex Villa
+                </h3>
+                <p class="text-gray-300 text-xs">Flat for sale</p>
+                <div class="flex gap-2 text-xs text-gray-300 mt-1">
+                  <span>🛏️ 2 bed</span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flex-shrink-0 w-[200px] sm:w-[230px] lg:w-[260px]">
+              <div
+                class="relative h-[190px] sm:h-[230px] lg:h-[270px] overflow-hidden bg-gray-800 rounded-xl"
+              >
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM.jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
+                >
+                  $990
+                </div>
+                <button
+                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
+                >
+                  ♥
+                </button>
+              </div>
+              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
+                <h3 class="text-white text-sm font-semibold truncate">
+                  Banani Duplex Villa
+                </h3>
+                <p class="text-gray-300 text-xs">Flat for sale</p>
+                <div class="flex gap-2 text-xs text-gray-300 mt-1">
+                  <span>🛏️ 2 bed</span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="flex-shrink-0 w-[200px] sm:w-[230px] lg:w-[260px]">
+              <div
+                class="relative h-[190px] sm:h-[230px] lg:h-[270px] overflow-hidden bg-gray-800 rounded-xl"
+              >
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
+                >
+                  $990
+                </div>
+                <button
+                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
+                >
+                  ♥
+                </button>
+              </div>
+              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
+                <h3 class="text-white text-sm font-semibold truncate">
+                  Banani Duplex Villa
+                </h3>
+                <p class="text-gray-300 text-xs">Flat for sale</p>
+                <div class="flex gap-2 text-xs text-gray-300 mt-1">
+                  <span>🛏️ 2 bed</span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 (Side Small) -->
+            <div
+              class="flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[240px] scale-95 opacity-90"
+            >
+              <div
+                class="relative h-[160px] sm:h-[190px] lg:h-[220px] overflow-hidden bg-gray-800 rounded-xl"
+              >
+                <img
+                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  class="w-full h-full object-cover"
+                  alt="Villa"
+                />
+                <div
+                  class="absolute top-3 right-3 bg-white/90 rounded-lg px-3 py-1 text-black text-sm font-bold"
+                >
+                  $990
+                </div>
+                <button
+                  class="absolute top-3 left-3 w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-red-500"
+                >
+                  ♥
+                </button>
+              </div>
+              <div class="bg-[#0E1B01]/70 p-3 rounded-b-xl">
+                <h3 class="text-white text-sm font-semibold truncate">
+                  Villa, Kemah Tinggi
+                </h3>
+                <p class="text-gray-300 text-xs">Flat for sale</p>
+                <div class="flex gap-2 text-xs text-gray-300 mt-1">
+                  <span>🛏️ 2 bed</span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Arrow -->
+          <button
+            class="absolute right-0 translate-x-full top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ❯
+          </button>
+        </div>
+      </div>
+
+      // ...existing code...
 
       <!-- What's New Section -->
       <section
