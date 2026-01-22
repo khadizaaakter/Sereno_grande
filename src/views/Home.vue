@@ -1272,76 +1272,107 @@ function slideRight() {
           </div>
         </div>
       </section>
-      <div
+
+      <!-- browser listing section -->
+      <section
         class="items-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent flex flex-col justify-center"
       >
         <button
-          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] m-16 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] my-8 sm:my-12 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
         >
           Browse Category Listing
         </button>
-      </div>
+      </section>
 
-      <!-- tenant facilities -->
-      <section class="w-full grid grid-cols-1 lg:grid-cols-3 gap-10 py-16">
-        <div class="lg:col-span-2">
+      <!-- Tenant Facilities Section -->
+      <section class="w-full px-4 sm:px-6 lg:px-16 py-16">
+        <!-- Heading -->
+        <div class="mb-10 lg:mb-16 text-center lg:text-left">
           <h2
-            class="text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+            class="text-4xl sm:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
           >
             Tenant Facilities
           </h2>
+          <p class="text-white text-sm sm:text-base mt-4 max-w-xl mx-auto lg:mx-0">
+            Thoughtfully curated facilities that ensure tenants enjoy convenience,
+            security, and modern comfort.
+          </p>
         </div>
 
-        <div class="text-white text-sm lg:text-base leading-relaxed flex items-start">
-          Thoughtfully curated facilities that ensure tenants enjoy convenience, security,
-          and modern comfort.
-        </div>
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+          <!-- Titles Column (Desktop) / Facility Stacks (Mobile) -->
+          <div class="lg:col-span-1 flex flex-col lg:space-y-10 space-y-6">
+            <!-- Facility 1 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Daily Housekeeping
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Daily housekeeping ensures your home stays spotless, comfortable, and
+                effortlessly maintained.
+              </p>
+            </div>
 
-        <div
-          class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 items-start"
-        >
-          <div class="space-y-6 lg:space-y-10 text-white text-lg sm:text-xl lg:text-2xl">
-            <div>Daily<br />Housekeeping</div>
-            <div>Breakfast<br />Inclusive</div>
-            <div>Coffee & Tea<br />Station</div>
-            <div>Toiletries & Spa<br />Amenities</div>
+            <!-- Facility 2 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Breakfast Inclusive
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Breakfast is included every morning, offering fresh and nourishing meals
+                to start your day right.
+              </p>
+            </div>
+
+            <!-- Facility 3 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Coffee & Tea Station
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Enjoy complimentary coffee and tea station available at all times.
+              </p>
+            </div>
+
+            <!-- Facility 4 -->
+            <div class="flex flex-col lg:block">
+              <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-white">
+                Toiletries & Spa Amenities
+              </div>
+              <p class="text-sm sm:text-base text-gray-300 mt-2 lg:mt-4">
+                Premium toiletries and spa amenities for a relaxing experience.
+              </p>
+            </div>
           </div>
 
+          <!-- Image Column -->
           <div
-            class="space-y-6 lg:space-y-10 text-white text-sm sm:text-base leading-relaxed"
-          >
-            <div>
-              Daily housekeeping ensures your home stays spotless, comfortable, and
-              effortlessly maintained.
-            </div>
-            <div>
-              Breakfast is included every morning, offering fresh and nourishing meals to
-              start your day right.
-            </div>
-            <div>Enjoy complimentary coffee and tea station available at all times.</div>
-            <div>Premium toiletries and spa amenities for a relaxing experience.</div>
-          </div>
-
-          <div
-            class="flex justify-center md:justify-start lg:justify-end w-full md:col-span-2 lg:col-span-1 lg:col-start-3"
+            class="w-full flex justify-center lg:justify-end mt-10 lg:mt-0 lg:col-span-2"
           >
             <img
               src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM.jpeg"
               class="w-full max-w-[380px] h-auto sm:h-[300px] md:h-[400px] object-cover rounded-2xl"
+              alt="Tenant Facilities"
             />
           </div>
         </div>
       </section>
 
       <!-- Testimonials Section -->
-      <section class="w-full py-16">
-        <div class="flex items-start justify-between mb-12">
+      <section class="w-full py-16 px-4 sm:px-6 lg:px-16">
+        <!-- Heading & Arrows -->
+        <div
+          class="flex flex-col lg:flex-row items-start justify-between mb-12 gap-6 lg:gap-0"
+        >
           <h2
-            class="text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent max-w-[650px]"
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent max-w-full lg:max-w-[650px]"
           >
             What Do Our Clients Say About Us
           </h2>
-          <div class="flex gap-4">
+
+          <!-- Navigation Buttons -->
+          <div class="flex gap-4 lg:mt-0">
             <button class="rounded-full bg-white p-3 transition-colors hover:bg-white/80">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1380,334 +1411,256 @@ function slideRight() {
         </div>
 
         <!-- Testimonials Carousel -->
-        <div class="overflow-hidden">
-          <div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-            <!-- Testimonial Card 1 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-03.webp"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
-                </div>
+        <div
+          class="overflow-x-auto scroll-smooth flex gap-6 pb-4 scrollbar-hide snap-x snap-mandatory"
+        >
+          <!-- Testimonial Card (repeat for each) -->
+          <div
+            class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <iconify-icon
+                icon="ri:double-quotes-r"
+                style="color: #acffcb; font-size: 25px"
+              ></iconify-icon>
+              <div class="flex gap-1">
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
               </div>
             </div>
-
-            <!-- 02 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-03.jpg"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 03 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-02.jpg"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 04 -->
-            <div
-              class="flex h-[240px] w-[360px] flex-shrink-0 flex-col rounded-xl bg-[#0B1F00] p-4"
-            >
-              <div class="mb-4 flex items-start justify-between">
-                <div class="flex">
-                  <iconify-icon
-                    icon="ri:double-quotes-r"
-                    style="color: #acffcb; font-size: 25px"
-                  ></iconify-icon>
-                </div>
-                <div class="flex gap-1">
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                  <iconify-icon
-                    icon="prime:star-fill"
-                    style="color: #acffcb; font-size: 20px"
-                  ></iconify-icon>
-                </div>
-              </div>
-              <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
-                The property exceeded all expectations! From the thoughtful design to the
-                seamless check-in process, everything was perfect. Highly recommend for
-                anyone looking for quality accommodation.
-              </p>
-              <div class="mt-auto flex items-center gap-3">
-                <div>
-                  <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
-                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
-                    <img
-                      src="/images/pro-03.webp"
-                      alt="Profile"
-                      class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
-                    />
-                    <span>Dhaka, Bangladesh</span>
-                  </div>
+            <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
+              The property exceeded all expectations! From the thoughtful design to the
+              seamless check-in process, everything was perfect. Highly recommend for
+              anyone looking for quality accommodation.
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div>
+                <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
+                <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
+                  <img
+                    src="/images/pro-03.webp"
+                    alt="Profile"
+                    class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
+                  />
+                  <span>Dhaka, Bangladesh</span>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- card 2 -->
+          <div
+            class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <iconify-icon
+                icon="ri:double-quotes-r"
+                style="color: #acffcb; font-size: 25px"
+              ></iconify-icon>
+              <div class="flex gap-1">
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+              </div>
+            </div>
+            <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
+              The property exceeded all expectations! From the thoughtful design to the
+              seamless check-in process, everything was perfect. Highly recommend for
+              anyone looking for quality accommodation.
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div>
+                <p class="text-sm font-semibold leading-tight text-white">John Smith</p>
+                <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
+                  <img
+                    src="/images/pro-03.webp"
+                    alt="Profile"
+                    class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
+                  />
+                  <span>Dhaka, Bangladesh</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copy above card for others -->
+          <div
+            class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <iconify-icon
+                icon="ri:double-quotes-r"
+                style="color: #acffcb; font-size: 25px"
+              ></iconify-icon>
+              <div class="flex gap-1">
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+                <iconify-icon
+                  icon="prime:star-fill"
+                  style="color: #acffcb; font-size: 20px"
+                ></iconify-icon>
+              </div>
+            </div>
+            <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
+              Excellent stay! Staff was super friendly and the location is perfect. Very
+              comfortable and clean property.
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div>
+                <p class="text-sm font-semibold leading-tight text-white">Jane Doe</p>
+                <div class="mt-1 flex items-center gap-2 text-sm text-gray-400">
+                  <img
+                    src="/images/pro-02.jpg"
+                    alt="Profile"
+                    class="w-8 h-8 rounded-full object-cover border border-[#ACFFCB]/40"
+                  />
+                  <span>Chittagong, Bangladesh</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more cards as needed -->
         </div>
       </section>
 
       <!-- asked quesiton -->
-      <section class="w-full py-12 sm:py-16 lg:py-20">
-        <!-- Header -->
-        <div class="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2
-            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
-          >
-            Frequently Asked Questions
-          </h2>
-          <p
-            class="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed"
-          >
-            Have questions about renting houses? <br />
-            Our FAQ section gives you clear and simple answers to guide your journey.
-          </p>
-        </div>
+<!-- Asked Questions / FAQ Section -->
+<section class="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-16">
+  <!-- Header -->
+  <div class="text-center mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat 
+             bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
+    >
+      Frequently Asked Questions
+    </h2>
+    <p class="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+      Have questions about renting houses? <br />
+      Our FAQ section gives you clear and simple answers to guide your journey.
+    </p>
+  </div>
 
-        <!-- FAQ Items -->
-        <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
-          <!-- 1 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How do I start searching for properties?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-            <div
-              class="hidden px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10"
-            >
-              <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-                Simply use the search bar on our homepage to filter properties by
-                location, property type, and price range. You can also use Advanced Search
-                for more specific filters.
-              </p>
-            </div>
-          </div>
+  <!-- FAQ Items -->
+  <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
+    <!-- FAQ Card Template -->
+    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
+      <button
+        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+      >
+        <h3
+          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
+                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+        >
+          How do I start searching for properties?
+        </h3>
+        <span
+          class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+        >+</span>
+      </button>
+      <div class="hidden px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10">
+        <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+          Simply use the search bar on our homepage to filter properties by location, property type, and price range. You can also use Advanced Search for more specific filters.
+        </p>
+      </div>
+    </div>
 
-          <!-- 2 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                Can I rent a property for short-term stays?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
+    <!-- Repeat for other FAQ items -->
+    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
+      <button
+        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+      >
+        <h3
+          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
+                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+        >
+          Can I rent a property for short-term stays?
+        </h3>
+        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
+      </button>
+    </div>
 
-          <!-- 3 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How does the AI Assistant help me find a property?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
+    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
+      <button
+        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+      >
+        <h3
+          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
+                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+        >
+          How does the AI Assistant help me find a property?
+        </h3>
+        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
+      </button>
+    </div>
 
-          <!-- 4 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                Can I trust the listings with this platform?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl bg-[#0B130B]"
-                >+</span
-              >
-            </button>
-          </div>
+    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
+      <button
+        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+      >
+        <h3
+          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
+                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+        >
+          Can I trust the listings with this platform?
+        </h3>
+        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
+      </button>
+    </div>
 
-          <!-- 5 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How do I list my property?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
-        </div>
-      </section>
+    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
+      <button
+        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+      >
+        <h3
+          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
+                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+        >
+          How do I list my property?
+        </h3>
+        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
+      </button>
+    </div>
+  </div>
+</section>
+
     </div>
 
     <!-- footer section -->
