@@ -1561,106 +1561,127 @@ function slideRight() {
         </div>
       </section>
 
-      <!-- asked quesiton -->
-<!-- Asked Questions / FAQ Section -->
-<section class="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-16">
-  <!-- Header -->
-  <div class="text-center mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
-    <h2
-      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat 
-             bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
-    >
-      Frequently Asked Questions
-    </h2>
-    <p class="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-      Have questions about renting houses? <br />
-      Our FAQ section gives you clear and simple answers to guide your journey.
-    </p>
-  </div>
+      <!-- asked quesiton section -->
+      <section class="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-16">
+        <!-- Header -->
+        <div class="text-center mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
+          >
+            Frequently Asked Questions
+          </h2>
+          <p
+            class="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed"
+          >
+            Have questions about renting houses? <br />
+            Our FAQ section gives you clear and simple answers to guide your journey.
+          </p>
+        </div>
 
-  <!-- FAQ Items -->
-  <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
-    <!-- FAQ Card Template -->
-    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
-      <button
-        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-      >
-        <h3
-          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
-                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-        >
-          How do I start searching for properties?
-        </h3>
-        <span
-          class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-        >+</span>
-      </button>
-      <div class="hidden px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10">
-        <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-          Simply use the search bar on our homepage to filter properties by location, property type, and price range. You can also use Advanced Search for more specific filters.
-        </p>
-      </div>
-    </div>
+        <!-- FAQ Items -->
+        <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
+          <!-- FAQ Card Template -->
+          <div
+            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+          >
+            <button
+              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+            >
+              <h3
+                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+              >
+                How do I start searching for properties?
+              </h3>
+              <span
+                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+                >+</span
+              >
+            </button>
+            <div
+              class="hidden px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10"
+            >
+              <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+                Simply use the search bar on our homepage to filter properties by
+                location, property type, and price range. You can also use Advanced Search
+                for more specific filters.
+              </p>
+            </div>
+          </div>
 
-    <!-- Repeat for other FAQ items -->
-    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
-      <button
-        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-      >
-        <h3
-          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
-                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-        >
-          Can I rent a property for short-term stays?
-        </h3>
-        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
-      </button>
-    </div>
+          <!-- Repeat for other FAQ items -->
+          <div
+            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+          >
+            <button
+              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+            >
+              <h3
+                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+              >
+                Can I rent a property for short-term stays?
+              </h3>
+              <span
+                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+                >+</span
+              >
+            </button>
+          </div>
 
-    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
-      <button
-        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-      >
-        <h3
-          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
-                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-        >
-          How does the AI Assistant help me find a property?
-        </h3>
-        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
-      </button>
-    </div>
+          <div
+            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+          >
+            <button
+              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+            >
+              <h3
+                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+              >
+                How does the AI Assistant help me find a property?
+              </h3>
+              <span
+                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+                >+</span
+              >
+            </button>
+          </div>
 
-    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
-      <button
-        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-      >
-        <h3
-          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
-                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-        >
-          Can I trust the listings with this platform?
-        </h3>
-        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
-      </button>
-    </div>
+          <div
+            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+          >
+            <button
+              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+            >
+              <h3
+                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+              >
+                Can I trust the listings with this platform?
+              </h3>
+              <span
+                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+                >+</span
+              >
+            </button>
+          </div>
 
-    <div class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition">
-      <button
-        class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-      >
-        <h3
-          class="text-sm sm:text-base lg:text-lg font-semibold montserrat 
-                 bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-        >
-          How do I list my property?
-        </h3>
-        <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">+</span>
-      </button>
-    </div>
-  </div>
-</section>
-
+          <div
+            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+          >
+            <button
+              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+            >
+              <h3
+                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+              >
+                How do I list my property?
+              </h3>
+              <span
+                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+                >+</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- footer section -->
