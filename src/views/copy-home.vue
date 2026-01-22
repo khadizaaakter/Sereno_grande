@@ -368,6 +368,45 @@
                   </div>
                 </div>
               </div>
+
+              <!-- card 6 -->
+                            <div
+                class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+              >
+                <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                  <img
+                    src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                    class="w-full h-full object-cover"
+                    alt="Villa"
+                  />
+                </div>
+                <!-- <div class="p-3 sm:p-4 text-white"> -->
+                <div class="p-2 text-white">
+                  <div class="flex gap-3 justify-between">
+                    <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                      Villa, Kemah Tinggi
+                    </h3>
+                    <div
+                      class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                    >
+                      $990
+                    </div>
+                  </div>
+                  <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
+                    Flat for sale
+                  </p>
+                  <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                    <span class="flex">
+                      <iconify-icon
+                        icon="material-symbols:bed-outline-rounded"
+                        style="font-size: 20px; padding-right: 5px"
+                      ></iconify-icon
+                      >2 Bedrooms</span
+                    >
+                    <span>📐 214m²</span>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- Right Arrow -->
             <button
