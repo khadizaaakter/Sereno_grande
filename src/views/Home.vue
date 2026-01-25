@@ -7,10 +7,10 @@ import { Icon } from "@iconify/vue";
 // Slider buttons (optional)
 const slider = ref(null);
 const slideLeft = () => {
-  slider.value.scrollBy({ left: -200, behavior: "smooth" });
+  slider.value.scrollBy({ left: -260, behavior: "smooth" });
 };
 const slideRight = () => {
-  slider.value.scrollBy({ left: 200, behavior: "smooth" });
+  slider.value.scrollBy({ left: 260, behavior: "smooth" });
 };
 
 // toggle FAQ
@@ -184,7 +184,7 @@ onMounted(() => {
     <div class="w-full px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10 mx-auto max-w-7xl">
       <!-- Crafting Value Section -->
       <div
-        class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-24 sm:pt-32 lg:pt-40"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-16 sm:pt-24 lg:pt-32"
       >
         <!-- LEFT TEXT -->
         <div
@@ -241,7 +241,7 @@ onMounted(() => {
       </div>
 
       <!-- Property Section -->
-      <section class="w-full mt-24 sm:mt-32 lg:mt-40">
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
         >
@@ -317,7 +317,7 @@ onMounted(() => {
 
       <!-- What's New Section -->
       <section
-        class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 py-12 sm:py-16 lg:py-20"
+        class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 pt-16 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20"
       >
         <div
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
@@ -454,14 +454,14 @@ onMounted(() => {
         class="items-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent flex flex-col justify-center"
       >
         <button
-          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] my-8 sm:my-12 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] mt-1 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
         >
           Browse Category Listing
         </button>
       </section>
 
       <!-- Tenant Facilities Section -->
-      <section class="w-full px-4 sm:px-6 lg:px-16 py-16">
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
         <!-- Heading -->
         <div class="mb-10 lg:mb-16 text-center lg:text-left">
           <h2
@@ -536,7 +536,7 @@ onMounted(() => {
       </section>
 
       <!-- Testimonials Section -->
-      <section class="w-full py-16 px-4 sm:px-6 lg:px-16">
+      <section class="w-full pt-16 sm:pt-24">
         <!-- Heading & Arrows -->
         <div
           class="flex flex-col lg:flex-row items-start justify-between mb-12 gap-6 lg:gap-0"
@@ -738,7 +738,7 @@ onMounted(() => {
       </section>
 
       <!-- asked quesiton section -->
-      <section class="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-16">
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
         <!-- Header -->
         <div class="text-center mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
           <h2
