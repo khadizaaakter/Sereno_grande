@@ -14,8 +14,7 @@ function slideRight() {
 
 <template>
   <div
-    class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
-    style="background-image: url('/images/Landing_Page.png')"
+    class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed body-bg"
   >
     <div
       class="w-full flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 px-3 sm:px-6 lg:px-0"
@@ -49,7 +48,7 @@ function slideRight() {
               class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
             >
               <div class="text-sm sm:text-lg lg:text-xl font-extrabold">SERENO</div>
-              <div class="text-sm sm:text-lg lg:text-xl font-extrabold">GRANDE</div>
+              <div class="text-sm sm:text-lg lg:text-xl font-extrabold">LEVANDE</div>
             </div>
           </div>
 
@@ -192,7 +191,7 @@ function slideRight() {
       <!-- Property Section -->
       <section class="w-full mt-24 sm:mt-32 lg:mt-40">
         <h2
-          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 sm:mb-12"
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
         >
           Property Highlights
         </h2>
@@ -1686,10 +1685,8 @@ function slideRight() {
 
     <!-- footer section -->
     <section
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-4 sm:px-6 md:px-8 lg:px-12 pt-20 w-full overflow-hidden"
-      style="
-        background-image: url('/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg');
-      "
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-4 sm:px-6 md:px-8 lg:px-12 pt-20 w-full overflow-hidden footer-bg"
+
     >
       <div class="col-span-1 sm:col-span-2 lg:col-span-3">
         <h2
@@ -1697,7 +1694,7 @@ function slideRight() {
         >
           SERENO
           <br />
-          GRANDE
+          LEVANDE
         </h2>
 
         <p class="text-sm sm:text-base md:text-lg py-3 text-white">
@@ -1800,6 +1797,23 @@ function slideRight() {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap");
+
+
+.body-bg {
+  background-image: url("/images/Landing_Page.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.footer-bg {
+  background-image: url("/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
 
 .montserrat {
   font-family: "Montserrat", sans-serif;
