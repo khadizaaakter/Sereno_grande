@@ -4,15 +4,14 @@ import { onMounted, ref } from "vue";
 import { apiBase } from "@/utilities/config.js";
 import { Icon } from "@iconify/vue";
 
+// Slider buttons (optional)
 const slider = ref(null);
-
-function slideLeft() {
-  slider.value.scrollBy({ left: -300, behavior: "smooth" });
-}
-
-function slideRight() {
-  slider.value.scrollBy({ left: 300, behavior: "smooth" });
-}
+const slideLeft = () => {
+  slider.value.scrollBy({ left: -200, behavior: "smooth" });
+};
+const slideRight = () => {
+  slider.value.scrollBy({ left: 200, behavior: "smooth" });
+};
 
 // get api for property highlights
 const properties = ref([]);
@@ -20,8 +19,7 @@ const properties = ref([]);
 const fetchProperties = async () => {
   try {
     const response = await axios.get(`${apiBase}property/toplist`);
-    console.log("API Response:", response.data);
-    properties.value = response.data.data;
+    properties.value = response.data.data || [];
   } catch (error) {
     console.error("Error fetching properties:", error);
   }
@@ -30,8 +28,21 @@ const fetchProperties = async () => {
 // image path variable
 const imageBase = "https://hauslyapi.scfnaogaon.org/storage/";
 
+// get api for what's new
+const popularProperties = ref([]);
+
+const fetchPopularProperties = async () => {
+  try {
+    const res = await axios.get(`${apiBase}property/best-deals`);
+    console.log(res.data.data);
+    popularProperties.value = res.data.data || [];
+  } catch (error) {
+    console.error("Error fetching popular properties:", error);
+  }
+}
 onMounted(() => {
   fetchProperties();
+  fetchPopularProperties();
 });
 </script>
 
@@ -241,7 +252,7 @@ onMounted(() => {
                 <img
                   :src="imageBase + property?.photos?.[0]?.path"
                   class="w-full h-full object-cover"
-                  alt="Villa"
+                  :alt="property.property_name || 'Property Image'"
                 />
               </div>
 
@@ -254,7 +265,7 @@ onMounted(() => {
                   <div
                     class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
                   >
-                    {{ property.base_price_per_night }}
+                    ${{ property.base_price_per_night }}
                   </div>
                 </div>
 
@@ -305,11 +316,12 @@ onMounted(() => {
         >
           <!-- cards 1-->
           <div
+          v-for="popularProperty in popularProperties" :key="popularProperty.id"
             class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
           >
             <div class="relative">
               <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
+                :src="imageBase + popularProperty?.photos?.[0]?.path"
                 class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
               />
               <span
@@ -324,7 +336,7 @@ onMounted(() => {
             >
               <div class="flex justify-between items-center">
                 <p class="text-sm xs:text-base sm:text-lg font-semibold">
-                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
+                  ৳{{ popularProperty.base_price_per_night }}<span class="text-[10px] xs:text-xs font-normal text-white/60">
                     /month</span
                   >
                 </p>
@@ -348,10 +360,10 @@ onMounted(() => {
                 </div>
               </div>
 
-              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
+              <h3 class="text-xs xs:text-sm font-semibold">{{popularProperty.property_name}}</h3>
 
               <p class="text-[10px] xs:text-xs text-white/60">
-                24 Green Corner, Dhanmondi, Dhaka
+                {{popularProperty.street_address}}
               </p>
 
               <div
@@ -410,7 +422,6 @@ onMounted(() => {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
