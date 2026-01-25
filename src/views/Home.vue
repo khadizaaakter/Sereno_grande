@@ -13,13 +13,12 @@ const slideRight = () => {
   slider.value.scrollBy({ left: 200, behavior: "smooth" });
 };
 
-// toggle FAQ 
+// toggle FAQ
 const openIndex = ref(null);
 
 const toggleFAQ = (index) => {
   openIndex.value = openIndex.value === index ? null : index;
 };
-
 
 // get api for property highlights
 const properties = ref([]);
@@ -280,7 +279,7 @@ onMounted(() => {
               <!-- Content -->
               <div class="p-2 text-white">
                 <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm line-clamp-2">
                     {{ property.property_name }}
                   </h3>
                   <div
@@ -358,7 +357,7 @@ onMounted(() => {
             >
               <div class="flex justify-between items-center">
                 <p class="text-sm xs:text-base sm:text-lg font-semibold">
-                  ৳{{ popularProperty.base_price_per_night
+                  ${{ popularProperty.base_price_per_night
                   }}<span class="text-[10px] xs:text-xs font-normal text-white/60">
                     /month</span
                   >
@@ -387,7 +386,7 @@ onMounted(() => {
                 {{ popularProperty.property_name }}
               </h3>
 
-              <p class="text-[10px] xs:text-xs text-white/60">
+              <p class="text-[10px] xs:text-xs text-white/60 line-clamp-1">
                 {{ popularProperty.street_address }}
               </p>
 
@@ -758,39 +757,40 @@ onMounted(() => {
         <!-- FAQ Items -->
         <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
           <!-- FAQ Card Template -->
-         <div
-  v-for="(faq, index) in faqs"
-  :key="index"
-  class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
->
-  <!-- Question Button -->
-  <button
-    @click="toggleFAQ(index)"
-    class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-  >
-    <h3
-      class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-    >
-      {{ faq.question }}
-    </h3>
+          <div
+            v-for="(faq, index) in faqs"
+            :key="index"
+            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+          >
+            <!-- Question Button -->
+            <button
+              @click="toggleFAQ(index)"
+              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+            >
+              <h3
+                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+              >
+                {{ faq.question }}
+              </h3>
 
-    <!-- + / - icon -->
-    <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">
-      {{ openIndex === index ? '−' : '+' }}
-    </span>
-  </button>
+              <!-- + / - icon -->
+              <span
+                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
+              >
+                {{ openIndex === index ? "−" : "+" }}
+              </span>
+            </button>
 
-  <!-- Answer -->
-  <div
-    v-show="openIndex === index"
-    class="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10 pt-2"
-  >
-    <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-      {{ faq.answer }}
-    </p>
-  </div>
-</div>
-
+            <!-- Answer -->
+            <div
+              v-show="openIndex === index"
+              class="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10 pt-2"
+            >
+              <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+                {{ faq.answer }}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
