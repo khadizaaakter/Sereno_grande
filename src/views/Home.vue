@@ -1,5 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import axios from "axios";
+import { onMounted, ref } from "vue";
+import { apiBase } from "@/utilities/config.js";
+import { Icon } from "@iconify/vue";
 
 const slider = ref(null);
 
@@ -10,12 +13,30 @@ function slideLeft() {
 function slideRight() {
   slider.value.scrollBy({ left: 300, behavior: "smooth" });
 }
+
+// get api for property highlights
+const properties = ref([]);
+
+const fetchProperties = async () => {
+  try {
+    const response = await axios.get(`${apiBase}property/toplist`);
+    console.log("API Response:", response.data);
+    properties.value = response.data.data;
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+  }
+};
+
+// image path variable
+const imageBase = "https://hauslyapi.scfnaogaon.org/storage/";
+
+onMounted(() => {
+  fetchProperties();
+});
 </script>
 
 <template>
-  <div
-    class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed body-bg"
-  >
+  <div class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed body-bg">
     <div
       class="w-full flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 px-3 sm:px-6 lg:px-0"
     >
@@ -211,12 +232,13 @@ function slideRight() {
             class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4"
           >
             <div
+              v-for="property in properties" :key="property.id"
               class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
             >
               <!-- Image -->
               <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                 <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+                  :src = "imageBase + property.photos[0].path"
                   class="w-full h-full object-cover"
                   alt="Villa"
                 />
@@ -226,12 +248,12 @@ function slideRight() {
               <div class="p-2 text-white">
                 <div class="flex gap-3 justify-between">
                   <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
+                    {{property.property_name}}
                   </h3>
                   <div
                     class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
                   >
-                    $990
+                    {{property.base_price_per_night}}
                   </div>
                 </div>
 
@@ -239,174 +261,10 @@ function slideRight() {
 
                 <div class="flex justify-between text-xs sm:text-sm text-gray-300">
                   <span class="flex items-center gap-1">
-                    <iconify-icon
+                    <Icon
                       icon="material-symbols:bed-outline-rounded"
                       style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- card  -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- card -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
+                    ></Icon>
                     2 Bedrooms
                   </span>
                   <span>📐 214m²</span>
@@ -1418,27 +1276,27 @@ function slideRight() {
             class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
           >
             <div class="mb-4 flex items-start justify-between">
-              <iconify-icon
+              <Icon
                 icon="ri:double-quotes-r"
                 style="color: #acffcb; font-size: 25px"
-              ></iconify-icon>
+              ></Icon>
               <div class="flex gap-1">
-                <iconify-icon
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
+                ></Icon>
               </div>
             </div>
             <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
@@ -1466,27 +1324,27 @@ function slideRight() {
             class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
           >
             <div class="mb-4 flex items-start justify-between">
-              <iconify-icon
+              <Icon
                 icon="ri:double-quotes-r"
                 style="color: #acffcb; font-size: 25px"
-              ></iconify-icon>
+              ></Icon>
               <div class="flex gap-1">
-                <iconify-icon
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
+                ></Icon>
               </div>
             </div>
             <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
@@ -1514,27 +1372,27 @@ function slideRight() {
             class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
           >
             <div class="mb-4 flex items-start justify-between">
-              <iconify-icon
+              <Icon
                 icon="ri:double-quotes-r"
                 style="color: #acffcb; font-size: 25px"
-              ></iconify-icon>
+              ></Icon>
               <div class="flex gap-1">
-                <iconify-icon
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
+                ></Icon>
               </div>
             </div>
             <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
@@ -1686,7 +1544,6 @@ function slideRight() {
     <!-- footer section -->
     <section
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-4 sm:px-6 md:px-8 lg:px-12 pt-20 w-full overflow-hidden footer-bg"
-
     >
       <div class="col-span-1 sm:col-span-2 lg:col-span-3">
         <h2
@@ -1703,22 +1560,22 @@ function slideRight() {
         </p>
         <div class="flex items-center gap-4 pt-0 md:pt-4 flex-wrap">
           <a href="#"
-            ><iconify-icon icon="logos:facebook" style="font-size: 30px"></iconify-icon>
+            ><Icon icon="logos:facebook" style="font-size: 30px"></Icon>
           </a>
           <a href="#"
-            ><iconify-icon
+            ><Icon
               icon="skill-icons:instagram"
               style="font-size: 30px"
-            ></iconify-icon
+            ></Icon
           ></a>
           <a href="#" class="text-white text-[30px]">
-            <iconify-icon icon="skill-icons:twitter"></iconify-icon>
+            <Icon icon="skill-icons:twitter"></Icon>
           </a>
           <a href="#"
-            ><iconify-icon
+            ><Icon
               icon="logos:linkedin-icon"
               style="font-size: 30px"
-            ></iconify-icon
+            ></Icon
           ></a>
         </div>
       </div>
@@ -1739,24 +1596,24 @@ function slideRight() {
           Contact Us
         </h3>
         <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
-          <iconify-icon
+          <Icon
             icon="mdi:map-marker"
             style="color: #acffcb; font-size: 20px"
-          ></iconify-icon>
+          ></Icon>
           <span class="break-words">House 123, Road 45, Gulshan 2, Dhaka 1212</span>
         </p>
         <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
-          <iconify-icon
+          <Icon
             icon="mingcute:phone-fill"
             style="color: #acffcb; font-size: 20px; align-items: center"
-          ></iconify-icon
+          ></Icon
           >+880 1234-567890
         </p>
         <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
-          <iconify-icon
+          <Icon
             icon="clarity:email-solid"
             style="color: #acffcb; font-size: 20px"
-          ></iconify-icon
+          ></Icon
           >info@serenobd.com
         </p>
       </div>
@@ -1797,7 +1654,6 @@ function slideRight() {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap");
-
 
 .body-bg {
   background-image: url("/images/Landing_Page.png");
