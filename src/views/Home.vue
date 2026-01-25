@@ -13,6 +13,14 @@ const slideRight = () => {
   slider.value.scrollBy({ left: 200, behavior: "smooth" });
 };
 
+// toggle FAQ 
+const openIndex = ref(null);
+
+const toggleFAQ = (index) => {
+  openIndex.value = openIndex.value === index ? null : index;
+};
+
+
 // get api for property highlights
 const properties = ref([]);
 
@@ -39,10 +47,23 @@ const fetchPopularProperties = async () => {
   } catch (error) {
     console.error("Error fetching popular properties:", error);
   }
-}
+};
+
+// get api for FAQ
+const faqs = ref([]);
+const fetchFAQ = async () => {
+  try {
+    const res = await axios.get(`${apiBase}faqs`);
+    faqs.value = res.data.faqs || [];
+  } catch (error) {
+    console.error("Error fetching FAQ:", error);
+  }
+};
+
 onMounted(() => {
   fetchProperties();
   fetchPopularProperties();
+  fetchFAQ();
 });
 </script>
 
@@ -316,7 +337,8 @@ onMounted(() => {
         >
           <!-- cards 1-->
           <div
-          v-for="popularProperty in popularProperties" :key="popularProperty.id"
+            v-for="popularProperty in popularProperties"
+            :key="popularProperty.id"
             class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
           >
             <div class="relative">
@@ -336,7 +358,8 @@ onMounted(() => {
             >
               <div class="flex justify-between items-center">
                 <p class="text-sm xs:text-base sm:text-lg font-semibold">
-                  ৳{{ popularProperty.base_price_per_night }}<span class="text-[10px] xs:text-xs font-normal text-white/60">
+                  ৳{{ popularProperty.base_price_per_night
+                  }}<span class="text-[10px] xs:text-xs font-normal text-white/60">
                     /month</span
                   >
                 </p>
@@ -360,10 +383,12 @@ onMounted(() => {
                 </div>
               </div>
 
-              <h3 class="text-xs xs:text-sm font-semibold">{{popularProperty.property_name}}</h3>
+              <h3 class="text-xs xs:text-sm font-semibold">
+                {{ popularProperty.property_name }}
+              </h3>
 
               <p class="text-[10px] xs:text-xs text-white/60">
-                {{popularProperty.street_address}}
+                {{ popularProperty.street_address }}
               </p>
 
               <div
@@ -733,105 +758,39 @@ onMounted(() => {
         <!-- FAQ Items -->
         <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
           <!-- FAQ Card Template -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How do I start searching for properties?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-            <div
-              class="hidden px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10"
-            >
-              <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-                Simply use the search bar on our homepage to filter properties by
-                location, property type, and price range. You can also use Advanced Search
-                for more specific filters.
-              </p>
-            </div>
-          </div>
+         <div
+  v-for="(faq, index) in faqs"
+  :key="index"
+  class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
+>
+  <!-- Question Button -->
+  <button
+    @click="toggleFAQ(index)"
+    class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
+  >
+    <h3
+      class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
+    >
+      {{ faq.question }}
+    </h3>
 
-          <!-- Repeat for other FAQ items -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                Can I rent a property for short-term stays?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
+    <!-- + / - icon -->
+    <span class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl">
+      {{ openIndex === index ? '−' : '+' }}
+    </span>
+  </button>
 
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How does the AI Assistant help me find a property?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
+  <!-- Answer -->
+  <div
+    v-show="openIndex === index"
+    class="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10 pt-2"
+  >
+    <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+      {{ faq.answer }}
+    </p>
+  </div>
+</div>
 
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                Can I trust the listings with this platform?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
-
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How do I list my property?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
         </div>
       </section>
     </div>
