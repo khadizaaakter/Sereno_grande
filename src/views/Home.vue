@@ -1,22 +1,73 @@
 <script setup>
-import { ref } from "vue";
+import axios from "axios";
+import { onMounted, ref } from "vue";
+import { apiBase } from "@/utilities/config.js";
+import { Icon } from "@iconify/vue";
 
+// Slider buttons
 const slider = ref(null);
+const slideLeft = () => {
+slider.value.scrollBy({ left: -260, behavior: "smooth" });
+};
+const slideRight = () => {
+slider.value.scrollBy({ left: 260, behavior: "smooth" });
+};
 
-function slideLeft() {
-  slider.value.scrollBy({ left: -300, behavior: "smooth" });
-}
+// toggle FAQ
+const openIndex = ref(null);
 
-function slideRight() {
-  slider.value.scrollBy({ left: 300, behavior: "smooth" });
-}
+const toggleFAQ = (index) => {
+  openIndex.value = openIndex.value === index ? null : index;
+};
+
+// get api for property highlights
+const properties = ref([]);
+
+const fetchProperties = async () => {
+  try {
+    const response = await axios.get(`${apiBase}property/toplist`);
+    properties.value = response.data.data || [];
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+  }
+};
+
+// image path variable
+const imageBase = "https://hauslyapi.scfnaogaon.org/storage/";
+
+// get api for what's new
+const popularProperties = ref([]);
+
+const fetchPopularProperties = async () => {
+  try {
+    const res = await axios.get(`${apiBase}property/best-deals`);
+    console.log(res.data.data);
+    popularProperties.value = res.data.data || [];
+  } catch (error) {
+    console.error("Error fetching popular properties:", error);
+  }
+};
+
+// get api for FAQ
+const faqs = ref([]);
+const fetchFAQ = async () => {
+  try {
+    const res = await axios.get(`${apiBase}faqs`);
+    faqs.value = res.data.faqs || [];
+  } catch (error) {
+    console.error("Error fetching FAQ:", error);
+  }
+};
+
+onMounted(() => {
+  fetchProperties();
+  fetchPopularProperties();
+  fetchFAQ();
+});
 </script>
 
 <template>
-  <div
-    class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
-    style="background-image: url('/images/Landing_Page.png')"
-  >
+  <div class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed body-bg">
     <div
       class="w-full flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 px-3 sm:px-6 lg:px-0"
     >
@@ -49,7 +100,7 @@ function slideRight() {
               class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
             >
               <div class="text-sm sm:text-lg lg:text-xl font-extrabold">SERENO</div>
-              <div class="text-sm sm:text-lg lg:text-xl font-extrabold">GRANDE</div>
+              <div class="text-sm sm:text-lg lg:text-xl font-extrabold">LEVANDE</div>
             </div>
           </div>
 
@@ -133,7 +184,7 @@ function slideRight() {
     <div class="w-full px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10 mx-auto max-w-7xl">
       <!-- Crafting Value Section -->
       <div
-        class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-24 sm:pt-32 lg:pt-40"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-16 sm:pt-24 lg:pt-32"
       >
         <!-- LEFT TEXT -->
         <div
@@ -189,246 +240,69 @@ function slideRight() {
         </div>
       </div>
 
-      <!-- Property Section -->
-      <section class="w-full mt-24 sm:mt-32 lg:mt-40">
-        <h2
-          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 sm:mb-12"
-        >
-          Property Highlights
-        </h2>
 
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Left Button -->
-          <button
-            @click="slideLeft"
-            class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-          >
-            ❮
-          </button>
+<!-- Property Section -->
+<section class="w-full pt-16 sm:pt-24 lg:pt-32">
+  <h2
+    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12">
+    Property Highlights
+  </h2>
 
-          <!-- Slider -->
-          <div
-            ref="slider"
-            class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4"
-          >
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Left Button -->
+    <button @click="slideLeft"
+      class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white">
+      ❮
+    </button>
+
+    <!-- Slider -->
+    <div ref="slider"
+      class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4">
+      <div v-for="property in properties" :key="property.id"
+        class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition">
+        <!-- Image -->
+        <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+          <img :src="imageBase + property?.photos?.[0]?.path" class="w-full h-full object-cover"
+            :alt="property.property_name || 'Property Image'" />
+        </div>
+
+        <!-- Content -->
+        <div class="p-2 text-white">
+          <div class="flex gap-3 justify-between">
+            <h3 class="font-semibold text-sm sm:text-sm lg:text-sm line-clamp-2">
+              {{ property.property_name }}
+            </h3>
             <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- card  -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- card -->
-            <div
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
-                  class="w-full h-full object-cover"
-                  alt="Villa"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm">
-                    Villa, Kemah Tinggi
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    $990
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <iconify-icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></iconify-icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
+              class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base">
+              ${{ property.base_price_per_night }}
             </div>
           </div>
 
-          <!-- Right Button -->
-          <button
-            @click="slideRight"
-            class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-          >
-            ❯
-          </button>
+          <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
+
+          <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+            <span class="flex items-center gap-1">
+              <Icon icon="material-symbols:bed-outline-rounded" style="font-size: 20px"></Icon>
+              2 Bedrooms
+            </span>
+            <span>📐 214m²</span>
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
+
+    <!-- Right Button -->
+    <button @click="slideRight"
+      class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white">
+      ❯
+    </button>
+  </div>
+</section>
+
 
       <!-- What's New Section -->
       <section
-        class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 py-12 sm:py-16 lg:py-20"
+        class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 pt-16 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20"
       >
         <div
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
@@ -447,11 +321,13 @@ function slideRight() {
         >
           <!-- cards 1-->
           <div
+            v-for="popularProperty in popularProperties"
+            :key="popularProperty.id"
             class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
           >
             <div class="relative">
               <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
+                :src="imageBase + popularProperty?.photos?.[0]?.path"
                 class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
               />
               <span
@@ -466,7 +342,8 @@ function slideRight() {
             >
               <div class="flex justify-between items-center">
                 <p class="text-sm xs:text-base sm:text-lg font-semibold">
-                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
+                  ${{ popularProperty.base_price_per_night
+                  }}<span class="text-[10px] xs:text-xs font-normal text-white/60">
                     /month</span
                   >
                 </p>
@@ -490,10 +367,12 @@ function slideRight() {
                 </div>
               </div>
 
-              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
+              <h3 class="text-xs xs:text-sm font-semibold">
+                {{ popularProperty.property_name }}
+              </h3>
 
-              <p class="text-[10px] xs:text-xs text-white/60">
-                24 Green Corner, Dhanmondi, Dhaka
+              <p class="text-[10px] xs:text-xs text-white/60 line-clamp-1">
+                {{ popularProperty.street_address }}
               </p>
 
               <div
@@ -548,724 +427,6 @@ function slideRight() {
                     />
                   </svg>
                   5x7
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- cards 2 -->
-          <div
-            class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
-          >
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-2 xs:-bottom-3 text-[8px] xs:text-[10px] font-semibold bg-[#B8FBE1] text-black px-2 xs:px-3 py-0.5 xs:py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div
-              class="pt-4 xs:pt-6 pb-3 xs:pb-4 px-3 xs:px-4 text-white space-y-2 xs:space-y-3"
-            >
-              <div class="flex justify-between items-center">
-                <p class="text-sm xs:text-base sm:text-lg font-semibold">
-                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
-                    /month</span
-                  >
-                </p>
-
-                <div
-                  class="w-6 xs:w-8 h-6 xs:h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
-
-              <p class="text-[10px] xs:text-xs text-white/60">
-                24 Green Corner, Dhanmondi, Dhaka
-              </p>
-
-              <div
-                class="border-t border-white/10 pt-2 xs:pt-3 flex justify-between text-[9px] xs:text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bath
-                </div>
-
-                <div class="flex items-center gap-1 hidden xs:flex">
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- cards 3 -->
-          <div
-            class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
-          >
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[100px] xs:h-[140px] sm:h-[160px] md:h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-2 xs:-bottom-3 text-[8px] xs:text-[10px] font-semibold bg-[#B8FBE1] text-black px-2 xs:px-3 py-0.5 xs:py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div
-              class="pt-4 xs:pt-6 pb-3 xs:pb-4 px-3 xs:px-4 text-white space-y-2 xs:space-y-3"
-            >
-              <div class="flex justify-between items-center">
-                <p class="text-sm xs:text-base sm:text-lg font-semibold">
-                  ৳2,095<span class="text-[10px] xs:text-xs font-normal text-white/60">
-                    /month</span
-                  >
-                </p>
-
-                <div
-                  class="w-6 xs:w-8 h-6 xs:h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-xs xs:text-sm font-semibold">Two Bed Apartment</h3>
-
-              <p class="text-[10px] xs:text-xs text-white/60">
-                24 Green Corner, Dhanmondi, Dhaka
-              </p>
-
-              <div
-                class="border-t border-white/10 pt-2 xs:pt-3 flex justify-between text-[9px] xs:text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bath
-                </div>
-
-                <div class="flex items-center gap-1 hidden xs:flex">
-                  <svg
-                    class="w-3 xs:w-4 h-3 xs:h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- cards 4 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
-              <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
-                </p>
-
-                <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
-
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
-
-              <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bathrooms
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7 m²
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- cards 5 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
-              <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
-                </p>
-
-                <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
-
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
-
-              <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bathrooms
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7 m²
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- cards 6 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
-              <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
-                </p>
-
-                <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
-
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
-
-              <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bathrooms
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7 m²
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- cards 7 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
-              <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
-                </p>
-
-                <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
-              <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bathrooms
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7 m²
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- cards 8 -->
-          <div class="bg-[#0B0F0C] rounded-2xl overflow-hidden border border-white/5">
-            <div class="relative">
-              <img
-                src="/images/WhatsApp Image 2026-01-19 at 12.36.06 PM (2).jpeg"
-                class="w-full h-[180px] object-cover"
-              />
-
-              <span
-                class="absolute -bottom-3 text-[10px] font-semibold bg-[#B8FBE1] text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-md"
-              >
-                ✦ POPULAR
-              </span>
-            </div>
-
-            <div class="pt-6 pb-4 px-4 text-white space-y-3">
-              <div class="flex justify-between items-center">
-                <p class="text-lg font-semibold">
-                  ৳2,095<span class="text-xs font-normal text-white/60"> /month</span>
-                </p>
-
-                <div
-                  class="w-8 h-8 rounded-full bg-white flex items-center justify-center"
-                >
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.682 4.318 12.682a4.5 4.5 0 010-6.364z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <h3 class="text-sm font-semibold">Two Bed Apartment</h3>
-
-              <p class="text-xs text-white/60">24 Green Corner, Dhanmondi, Dhaka</p>
-
-              <div
-                class="border-t border-white/10 pt-3 flex justify-between text-[11px] text-white/70"
-              >
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10h16M4 10v6m16-6v6M4 14h16M6 6h12v4H6z"
-                    />
-                  </svg>
-                  3 Beds
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 10h10v6H7zM5 10V7a2 2 0 012-2h10a2 2 0 012 2v3"
-                    />
-                  </svg>
-                  2 Bathrooms
-                </div>
-
-                <div class="flex items-center gap-1">
-                  <svg
-                    class="w-4 h-4 text-[#6EE7C8]"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM14 4h6v6h-6z"
-                    />
-                  </svg>
-                  5x7 m²
                 </div>
               </div>
             </div>
@@ -1278,14 +439,14 @@ function slideRight() {
         class="items-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent flex flex-col justify-center"
       >
         <button
-          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] my-8 sm:my-12 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
+          class="text-xs sm:text-sm w-[140px] sm:w-[160px] lg:w-[200px] h-[32px] sm:h-[36px] lg:h-[40px] mt-1 rounded-lg font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
         >
           Browse Category Listing
         </button>
       </section>
 
       <!-- Tenant Facilities Section -->
-      <section class="w-full px-4 sm:px-6 lg:px-16 py-16">
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
         <!-- Heading -->
         <div class="mb-10 lg:mb-16 text-center lg:text-left">
           <h2
@@ -1360,7 +521,7 @@ function slideRight() {
       </section>
 
       <!-- Testimonials Section -->
-      <section class="w-full py-16 px-4 sm:px-6 lg:px-16">
+      <section class="w-full pt-16 sm:pt-24">
         <!-- Heading & Arrows -->
         <div
           class="flex flex-col lg:flex-row items-start justify-between mb-12 gap-6 lg:gap-0"
@@ -1414,32 +575,32 @@ function slideRight() {
         <div
           class="overflow-x-auto scroll-smooth flex gap-6 pb-4 scrollbar-hide snap-x snap-mandatory"
         >
-          <!-- Testimonial Card  -->
+          <!-- Testimonial Card (repeat for each) -->
           <div
             class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
           >
             <div class="mb-4 flex items-start justify-between">
-              <iconify-icon
+              <Icon
                 icon="ri:double-quotes-r"
                 style="color: #acffcb; font-size: 25px"
-              ></iconify-icon>
+              ></Icon>
               <div class="flex gap-1">
-                <iconify-icon
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
+                ></Icon>
               </div>
             </div>
             <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
@@ -1462,32 +623,32 @@ function slideRight() {
             </div>
           </div>
 
-          <!-- card -->
+          <!-- card 2 -->
           <div
             class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
           >
             <div class="mb-4 flex items-start justify-between">
-              <iconify-icon
+              <Icon
                 icon="ri:double-quotes-r"
                 style="color: #acffcb; font-size: 25px"
-              ></iconify-icon>
+              ></Icon>
               <div class="flex gap-1">
-                <iconify-icon
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
+                ></Icon>
               </div>
             </div>
             <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
@@ -1509,32 +670,33 @@ function slideRight() {
               </div>
             </div>
           </div>
-          <!--  -->
+
+          <!-- Copy above card for others -->
           <div
             class="flex-shrink-0 w-full sm:w-[300px] md:w-[340px] lg:w-[360px] h-auto flex flex-col rounded-xl bg-[#0B1F00] p-4 snap-start"
           >
             <div class="mb-4 flex items-start justify-between">
-              <iconify-icon
+              <Icon
                 icon="ri:double-quotes-r"
                 style="color: #acffcb; font-size: 25px"
-              ></iconify-icon>
+              ></Icon>
               <div class="flex gap-1">
-                <iconify-icon
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
-                <iconify-icon
+                ></Icon>
+                <Icon
                   icon="prime:star-fill"
                   style="color: #acffcb; font-size: 20px"
-                ></iconify-icon>
+                ></Icon>
               </div>
             </div>
             <p class="mb-3 flex-grow text-sm leading-relaxed text-white">
@@ -1560,10 +722,10 @@ function slideRight() {
         </div>
       </section>
 
-      <!-- asked quesiton -->
-      <section class="w-full py-12 sm:py-16 lg:py-20">
+      <!-- asked quesiton section -->
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
         <!-- Header -->
-        <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+        <div class="text-center mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
           <h2
             class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-4 sm:mb-6"
           >
@@ -1579,108 +741,40 @@ function slideRight() {
 
         <!-- FAQ Items -->
         <div class="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
-          <!-- 1 -->
+          <!-- FAQ Card Template -->
           <div
+            v-for="(faq, index) in faqs"
+            :key="index"
             class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
           >
+            <!-- Question Button -->
             <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How do I start searching for properties?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-            <div
-              class="hidden px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10"
-            >
-              <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-                Simply use the search bar on our homepage to filter properties by
-                location, property type, and price range. You can also use Advanced Search
-                for more specific filters.
-              </p>
-            </div>
-          </div>
-
-          <!-- 2 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                Can I rent a property for short-term stays?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
-
-          <!-- 3 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How does the AI Assistant help me find a property?
-              </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
-              >
-            </button>
-          </div>
-
-          <!-- 4 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
+              @click="toggleFAQ(index)"
               class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group"
             >
               <h3
                 class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
               >
-                Can I trust the listings with this platform?
+                {{ faq.question }}
               </h3>
-              <span
-                class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl bg-[#0B130B]"
-                >+</span
-              >
-            </button>
-          </div>
 
-          <!-- 5 -->
-          <div
-            class="border border-white/20 bg-[#0B130B]/50 rounded-lg sm:rounded-xl overflow-hidden hover:border-white/40 transition"
-          >
-            <button
-              class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex justify-between items-center text-left group bg-[#0B130B]"
-            >
-              <h3
-                class="text-sm sm:text-base lg:text-lg font-semibold montserrat bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
-              >
-                How do I list my property?
-              </h3>
+              <!-- + / - icon -->
               <span
                 class="text-white/60 group-hover:text-white transition text-xl sm:text-2xl"
-                >+</span
               >
+                {{ openIndex === index ? "−" : "+" }}
+              </span>
             </button>
+
+            <!-- Answer -->
+            <div
+              v-show="openIndex === index"
+              class="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-5 border-t border-white/10 pt-2"
+            >
+              <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+                {{ faq.answer }}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1688,10 +782,7 @@ function slideRight() {
 
     <!-- footer section -->
     <section
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-4 sm:px-6 md:px-8 lg:px-12 pt-20 w-full overflow-hidden"
-      style="
-        background-image: url('/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg');
-      "
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 py-8 gap-4 relative bg-cover bg-bottom bg-no-repeat px-4 sm:px-6 md:px-8 lg:px-12 pt-20 w-full overflow-hidden footer-bg"
     >
       <div class="col-span-1 sm:col-span-2 lg:col-span-3">
         <h2
@@ -1699,7 +790,7 @@ function slideRight() {
         >
           SERENO
           <br />
-          GRANDE
+          LEVANDE
         </h2>
 
         <p class="text-sm sm:text-base md:text-lg py-3 text-white">
@@ -1707,24 +798,14 @@ function slideRight() {
           solutions worldwide.
         </p>
         <div class="flex items-center gap-4 pt-0 md:pt-4 flex-wrap">
+          <a href="#"><Icon icon="logos:facebook" style="font-size: 30px"></Icon> </a>
           <a href="#"
-            ><iconify-icon icon="logos:facebook" style="font-size: 30px"></iconify-icon>
-          </a>
-          <a href="#"
-            ><iconify-icon
-              icon="skill-icons:instagram"
-              style="font-size: 30px"
-            ></iconify-icon
+            ><Icon icon="skill-icons:instagram" style="font-size: 30px"></Icon
           ></a>
           <a href="#" class="text-white text-[30px]">
-            <iconify-icon icon="skill-icons:twitter"></iconify-icon>
+            <Icon icon="skill-icons:twitter"></Icon>
           </a>
-          <a href="#"
-            ><iconify-icon
-              icon="logos:linkedin-icon"
-              style="font-size: 30px"
-            ></iconify-icon
-          ></a>
+          <a href="#"><Icon icon="logos:linkedin-icon" style="font-size: 30px"></Icon></a>
         </div>
       </div>
       <div class="col-span-1 sm:col-span-1 lg:col-span-1">
@@ -1744,24 +825,18 @@ function slideRight() {
           Contact Us
         </h3>
         <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
-          <iconify-icon
-            icon="mdi:map-marker"
-            style="color: #acffcb; font-size: 20px"
-          ></iconify-icon>
+          <Icon icon="mdi:map-marker" style="color: #acffcb; font-size: 20px"></Icon>
           <span class="break-words">House 123, Road 45, Gulshan 2, Dhaka 1212</span>
         </p>
         <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
-          <iconify-icon
+          <Icon
             icon="mingcute:phone-fill"
             style="color: #acffcb; font-size: 20px; align-items: center"
-          ></iconify-icon
+          ></Icon
           >+880 1234-567890
         </p>
         <p class="text-white text-sm sm:text-base py-2 sm:py-3 flex gap-2 items-center">
-          <iconify-icon
-            icon="clarity:email-solid"
-            style="color: #acffcb; font-size: 20px"
-          ></iconify-icon
+          <Icon icon="clarity:email-solid" style="color: #acffcb; font-size: 20px"></Icon
           >info@serenobd.com
         </p>
       </div>
@@ -1803,6 +878,22 @@ function slideRight() {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap");
 
+.body-bg {
+  background-image: url("/images/Landing_Page.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.footer-bg {
+  background-image: url("/images/WhatsApp Image 2026-01-21 at 10.33.39 AM.jpeg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
 .montserrat {
   font-family: "Montserrat", sans-serif;
 }
@@ -1842,4 +933,26 @@ function slideRight() {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+
+.propertySwiper {
+  padding-bottom: 40px;
+}
+
+.property-slide {
+  width: 220px;
+}
+
+@media (min-width: 640px) {
+  .property-slide {
+    width: 260px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .property-slide {
+    width: 300px;
+  }
+}
+
 </style>
