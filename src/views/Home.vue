@@ -7,10 +7,10 @@ import { Icon } from "@iconify/vue";
 // Slider buttons
 const slider = ref(null);
 const slideLeft = () => {
-slider.value.scrollBy({ left: -260, behavior: "smooth" });
+  slider.value.scrollBy({ left: -260, behavior: "smooth" });
 };
 const slideRight = () => {
-slider.value.scrollBy({ left: 260, behavior: "smooth" });
+  slider.value.scrollBy({ left: 260, behavior: "smooth" });
 };
 
 // toggle FAQ
@@ -182,6 +182,7 @@ onMounted(() => {
 
     <!-- Main Container -->
     <div class="w-full px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10 mx-auto max-w-7xl">
+    
       <!-- Crafting Value Section -->
       <div
         class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-16 sm:pt-24 lg:pt-32"
@@ -240,65 +241,80 @@ onMounted(() => {
         </div>
       </div>
 
+      <!-- Property Section -->
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
+        >
+          Property Highlights
+        </h2>
 
-<!-- Property Section -->
-<section class="w-full pt-16 sm:pt-24 lg:pt-32">
-  <h2
-    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12">
-    Property Highlights
-  </h2>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Left Button -->
+          <button
+            @click="slideLeft"
+            class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ❮
+          </button>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Left Button -->
-    <button @click="slideLeft"
-      class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white">
-      ❮
-    </button>
-
-    <!-- Slider -->
-    <div ref="slider"
-      class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4">
-      <div v-for="property in properties" :key="property.id"
-        class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition">
-        <!-- Image -->
-        <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-          <img :src="imageBase + property?.photos?.[0]?.path" class="w-full h-full object-cover"
-            :alt="property.property_name || 'Property Image'" />
-        </div>
-
-        <!-- Content -->
-        <div class="p-2 text-white">
-          <div class="flex gap-3 justify-between">
-            <h3 class="font-semibold text-sm sm:text-sm lg:text-sm line-clamp-2">
-              {{ property.property_name }}
-            </h3>
+          <!-- Slider -->
+          <div
+            ref="slider"
+            class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4"
+          >
             <div
-              class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base">
-              ${{ property.base_price_per_night }}
+              v-for="property in properties"
+              :key="property.id"
+              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+            >
+              <!-- Image -->
+              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+                <img
+                  :src="imageBase + property?.photos?.[0]?.path"
+                  class="w-full h-full object-cover"
+                  :alt="property.property_name || 'Property Image'"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="p-2 text-white">
+                <div class="flex gap-3 justify-between">
+                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm line-clamp-2">
+                    {{ property.property_name }}
+                  </h3>
+                  <div
+                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+                  >
+                    ${{ property.base_price_per_night }}
+                  </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
+
+                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+                  <span class="flex items-center gap-1">
+                    <Icon
+                      icon="material-symbols:bed-outline-rounded"
+                      style="font-size: 20px"
+                    ></Icon>
+                    2 Bedrooms
+                  </span>
+                  <span>📐 214m²</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-          <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-            <span class="flex items-center gap-1">
-              <Icon icon="material-symbols:bed-outline-rounded" style="font-size: 20px"></Icon>
-              2 Bedrooms
-            </span>
-            <span>📐 214m²</span>
-          </div>
+          <!-- Right Button -->
+          <button
+            @click="slideRight"
+            class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ❯
+          </button>
         </div>
-      </div>
-    </div>
-
-    <!-- Right Button -->
-    <button @click="slideRight"
-      class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white">
-      ❯
-    </button>
-  </div>
-</section>
-
+      </section>
 
       <!-- What's New Section -->
       <section
@@ -934,7 +950,6 @@ onMounted(() => {
   display: none;
 }
 
-
 .propertySwiper {
   padding-bottom: 40px;
 }
@@ -954,5 +969,4 @@ onMounted(() => {
     width: 300px;
   }
 }
-
 </style>
