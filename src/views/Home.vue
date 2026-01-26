@@ -4,14 +4,15 @@ import { onMounted, ref } from "vue";
 import { apiBase } from "@/utilities/config.js";
 import { Icon } from "@iconify/vue";
 
-// Slider buttons (optional)
-const slider = ref(null);
-const slideLeft = () => {
-  slider.value.scrollBy({ left: -260, behavior: "smooth" });
-};
-const slideRight = () => {
-  slider.value.scrollBy({ left: 260, behavior: "smooth" });
-};
+import { Swiper, SwiperSlide } from "swiper/vue"
+
+import "swiper/css"
+import "swiper/css/effect-coverflow"
+import "swiper/css/pagination"
+
+import { EffectCoverflow, Pagination } from "swiper/modules"
+
+const modules = [EffectCoverflow, Pagination]
 
 // toggle FAQ
 const openIndex = ref(null);
@@ -240,80 +241,86 @@ onMounted(() => {
         </div>
       </div>
 
+
       <!-- Property Section -->
-      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
-        <h2
-          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
+<section class="w-full pt-16 sm:pt-24 lg:pt-32">
+  <h2
+    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
+  >
+    Property Highlights
+  </h2>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Swiper
+      :effect="'coverflow'"
+      :grabCursor="true"
+      :centeredSlides="true"
+      :slidesPerView="'auto'"
+      :loop="true"
+      :coverflowEffect="{
+        rotate: 0,
+        stretch: 0,
+        depth: 220,
+        modifier: 1,
+        slideShadows: false
+      }"
+      :pagination="{ clickable: true }"
+      :modules="modules"
+      class="propertySwiper"
+    >
+      <SwiperSlide
+        v-for="property in properties"
+        :key="property.id"
+        class="property-slide"
+      >
+        <!-- Your existing card design -->
+        <div
+          class="bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
         >
-          Property Highlights
-        </h2>
-
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Left Button -->
-          <button
-            @click="slideLeft"
-            class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-          >
-            ❮
-          </button>
-
-          <!-- Slider -->
-          <div
-            ref="slider"
-            class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4"
-          >
-            <div
-              v-for="property in properties"
-              :key="property.id"
-              class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
-            >
-              <!-- Image -->
-              <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
-                <img
-                  :src="imageBase + property?.photos?.[0]?.path"
-                  class="w-full h-full object-cover"
-                  :alt="property.property_name || 'Property Image'"
-                />
-              </div>
-
-              <!-- Content -->
-              <div class="p-2 text-white">
-                <div class="flex gap-3 justify-between">
-                  <h3 class="font-semibold text-sm sm:text-sm lg:text-sm line-clamp-2">
-                    {{ property.property_name }}
-                  </h3>
-                  <div
-                    class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
-                  >
-                    ${{ property.base_price_per_night }}
-                  </div>
-                </div>
-
-                <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">Flat for sale</p>
-
-                <div class="flex justify-between text-xs sm:text-sm text-gray-300">
-                  <span class="flex items-center gap-1">
-                    <Icon
-                      icon="material-symbols:bed-outline-rounded"
-                      style="font-size: 20px"
-                    ></Icon>
-                    2 Bedrooms
-                  </span>
-                  <span>📐 214m²</span>
-                </div>
-              </div>
-            </div>
+          <!-- Image -->
+          <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
+            <img
+              :src="imageBase + property?.photos?.[0]?.path"
+              class="w-full h-full object-cover"
+              :alt="property.property_name || 'Property Image'"
+            />
           </div>
 
-          <!-- Right Button -->
-          <button
-            @click="slideRight"
-            class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
-          >
-            ❯
-          </button>
+          <!-- Content -->
+          <div class="p-2 text-white">
+            <div class="flex gap-3 justify-between">
+              <h3 class="font-semibold text-sm line-clamp-2">
+                {{ property.property_name }}
+              </h3>
+
+              <div
+                class="text-right font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm sm:text-base"
+              >
+                ${{ property.base_price_per_night }}
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gray-300 mb-2 sm:mb-3">
+              Flat for sale
+            </p>
+
+            <div class="flex justify-between text-xs sm:text-sm text-gray-300">
+              <span class="flex items-center gap-1">
+                <Icon
+                  icon="material-symbols:bed-outline-rounded"
+                  style="font-size: 20px"
+                />
+                2 Bedrooms
+              </span>
+              <span>📐 214m²</span>
+            </div>
+          </div>
         </div>
-      </section>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</section>
+
 
       <!-- What's New Section -->
       <section
@@ -948,4 +955,26 @@ onMounted(() => {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+
+.propertySwiper {
+  padding-bottom: 40px;
+}
+
+.property-slide {
+  width: 220px;
+}
+
+@media (min-width: 640px) {
+  .property-slide {
+    width: 260px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .property-slide {
+    width: 300px;
+  }
+}
+
 </style>
