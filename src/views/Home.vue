@@ -4,6 +4,17 @@ import { onMounted, ref } from "vue";
 import { apiBase } from "@/utilities/config.js";
 import { Icon } from "@iconify/vue";
 
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+
+const modules = [EffectCoverflow, Pagination, Navigation];
+
+
 // Slider buttons
 const slider = ref(null);
 const slideLeft = () => {
@@ -242,7 +253,7 @@ onMounted(() => {
       </div>
 
       <!-- Property Section -->
-      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
+       <!-- <section class="w-full pt-16 sm:pt-24 lg:pt-32">
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
         >
@@ -250,7 +261,7 @@ onMounted(() => {
         </h2>
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Left Button -->
+
           <button
             @click="slideLeft"
             class="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
@@ -258,7 +269,6 @@ onMounted(() => {
             ❮
           </button>
 
-          <!-- Slider -->
           <div
             ref="slider"
             class="flex gap-5 sm:gap-6 lg:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide py-4"
@@ -268,7 +278,7 @@ onMounted(() => {
               :key="property.id"
               class="flex-shrink-0 w-[200px] sm:w-[150px] lg:w-[200px] bg-[#0E1B01]/80 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition"
             >
-              <!-- Image -->
+
               <div class="h-[150px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                 <img
                   :src="imageBase + property?.photos?.[0]?.path"
@@ -277,7 +287,6 @@ onMounted(() => {
                 />
               </div>
 
-              <!-- Content -->
               <div class="p-2 text-white">
                 <div class="flex gap-3 justify-between">
                   <h3 class="font-semibold text-sm sm:text-sm lg:text-sm line-clamp-2">
@@ -304,15 +313,109 @@ onMounted(() => {
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Right Button -->
+          </div> 
           <button
             @click="slideRight"
             class="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
           >
             ❯
           </button>
+        </div>
+      </section>  -->
+
+      <!-- Property Section -->
+      <section class="w-full pt-16 sm:pt-24 lg:pt-32">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
+        >
+          Property Highlights
+        </h2>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Left Button -->
+          <button
+            class="swiper-button-prev-custom absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ‹
+          </button>
+
+          <!-- Right Button -->
+          <button
+            class="swiper-button-next-custom absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center text-white"
+          >
+            ›
+          </button>
+
+          <!-- Swiper -->
+          <Swiper
+            v-if="properties.length"
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="'auto'"
+            :loop="properties.length >= 3"
+            :coverflowEffect="{
+              rotate: 0,
+              stretch: 0,
+              depth: 220,
+              modifier: 1,
+              slideShadows: false,
+            }"
+            :pagination="{ clickable: true }"
+            :navigation="{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }"
+            :modules="modules"
+            class="propertySwiper"
+          >
+            <SwiperSlide
+              v-for="property in properties"
+              :key="property.id"
+              class="property-slide"
+            >
+              <!-- Card -->
+              <div
+                class="bg-[#0E1B01]/80 rounded-xl overflow-hidden border border-white/10 hover:border-white/30 transition"
+              >
+                <div class="h-[160px] overflow-hidden">
+                  <img
+                    :src="imageBase + property?.photos?.[0]?.path"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div class="p-3 text-white">
+                  <div class="flex justify-between">
+                    <h3 class="font-semibold text-sm line-clamp-2">
+                      {{ property.property_name }}
+                    </h3>
+
+                    <div
+                      class="font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent text-sm"
+                    >
+                      ${{ property.base_price_per_night }}
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-gray-300 mb-2">Flat for sale</p>
+
+                  <div class="flex justify-between text-xs text-gray-300">
+                    <span class="flex items-center gap-1">
+                      <Icon icon="material-symbols:bed-outline-rounded" />
+                      2 Bedrooms
+                    </span>
+                    <span>📐 214m²</span>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+
+          <!-- fallback -->
+          <p v-else class="text-center text-gray-400 mt-6">
+            No properties available right now.
+          </p>
         </div>
       </section>
 
