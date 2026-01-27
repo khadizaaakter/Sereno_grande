@@ -2,7 +2,6 @@
   <!-- <div class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed body-bg"> -->
   <div class="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed body-bg">
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-
       <!-- header -->
       <section class="flex items-center justify-between py-4 sm:py-6">
         <div class="flex items-center gap-3 sm:gap-5">
@@ -29,7 +28,10 @@
       </section>
 
       <!-- details -->
-      <section class="mt-6 sm:mt-10 lg:mt-12">
+      <section v-if="loading" class="text-center text-gray-400 mt-10">
+        Loading property details...
+      </section>
+      <section v-else class="mt-6 sm:mt-10 lg:mt-12">
         <!-- Title + Price -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <!-- Title -->
@@ -39,7 +41,7 @@
             <h1
               class="text-lg sm:text-2xl lg:text-3xl font-extrabold montserrat leading-tight"
             >
-              Dhanmondi 8/A
+              {{ property?.property_name }}
             </h1>
           </div>
 
@@ -48,7 +50,8 @@
             class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
           >
             <p class="text-sm sm:text-lg lg:text-xl font-extrabold montserrat">
-              ৳20,000<span class="text-xs sm:text-sm text-gray-300">/month</span>
+              {{ property?.base_price_per_night
+              }}<span class="text-xs sm:text-sm text-gray-300">/month</span>
             </p>
           </div>
         </div>
@@ -57,22 +60,17 @@
         <p
           class="mt-3 sm:mt-4 text-xs sm:text-sm lg:text-base text-gray-300 leading-relaxed break-words"
         >
-          This modern 2-bedroom apartment is fully furnished and located in the heart of
-          Gulshan. The property features spacious rooms, a fully equipped kitchen, and a
-          private balcony with stunning views of the city. Perfect for both short-term and
-          long-term stays.
+          {{ property?.description }}
         </p>
 
-        <!-- Main Image -->
         <div class="mt-5 sm:mt-6">
           <img
-            src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (1).jpeg"
+            :src="imageBase + property?.photos?.[0]?.path"
             alt="Property"
             class="w-full h-[220px] sm:h-[320px] lg:h-[450px] rounded-2xl object-cover"
           />
         </div>
 
-        <!-- Thumbnail Gallery -->
         <div class="mt-3 sm:mt-4 flex flex-wrap gap-3">
           <img
             src="/images/WhatsApp Image 2026-01-19 at 12.36.05 PM (2).jpeg"
@@ -180,17 +178,7 @@
           <p
             class="text-xs sm:text-sm lg:text-base text-gray-300 leading-relaxed break-words"
           >
-            See the highlights of London via 2 classic modes of transport on this half-day
-            adventure. First, you will enjoy great views of Westminster Abbey, the Houses
-            of Parliament, and the London Eye, as you meander through the historic streets
-            on board a vintage double decker bus. Continue to see St. Paul’s Cathedral,
-            Sir Christopher Wren’s architectural masterpiece, where Admirals Nelson and
-            Wellington are buried, and Princess Diana and Prince Charles got married.
-            Continue to the Tower of London, built nearly 1,000 years ago during the reign
-            of William the Conqueror. Home to the Crown Jewels, the Tower is protected by
-            the famous Beefeaters, and the imposing palace has been used as a fortress and
-            a prison throughout its history. Your guide will take you to Traitors Gate,
-            where prisoners entered the Tower for the last time.
+            {{ property?.description || "" }}
           </p>
         </div>
       </section>
@@ -248,6 +236,7 @@
             >
               <!-- Card -->
               <div
+                @click="goToDetails(property.id)"
                 class="bg-[#0E1B01]/80 rounded-xl overflow-hidden border border-white/10 hover:border-white/30 transition"
               >
                 <div class="h-[160px] overflow-hidden">
@@ -580,7 +569,7 @@
         </div>
       </section>
 
-      <!-- asked quesiton section -->
+      <!-- asked quesiton section faq-->
       <section class="w-full pt-16 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
         <!-- Header -->
         <div class="text-center mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
@@ -738,6 +727,13 @@ import { onMounted, ref } from "vue";
 import axios from "axios";
 import { apiBase } from "@/utilities/config.js";
 import { Swiper, SwiperSlide } from "swiper/vue";
+import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+import { watch } from "vue";
+
+const route = useRoute();
+const router = useRouter();
+const loading = ref(false);
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -787,8 +783,36 @@ const fetchFAQ = async () => {
     console.error("Error fetching FAQ:", error);
   }
 };
+
+// go to signle details
+const propertyId = ref(route.params.id);
+
+const property = ref(null);
+const fetchSingleProperty = async () => {
+  loading.value = true;
+  try {
+    const res = await axios.get(`${apiBase}properties/${propertyId.value}`);
+    property.value = res.data.data;
+  } catch (error) {
+    console.log("error", error);
+  }
+  loading.value = false;
+};
+watch(
+  () => route.params.id,
+  (newId) => {
+    propertyId.value = newId;
+    fetchSingleProperty();
+  }
+);
+// gotodetails
+const goToDetails = (id) => {
+  router.push({ name: "property-details", params: { id } });
+};
+
 onMounted(() => {
   fetchProperties();
+  fetchSingleProperty();
   fetchFAQ();
 });
 </script>
