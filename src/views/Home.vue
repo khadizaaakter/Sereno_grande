@@ -14,7 +14,6 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 
 const modules = [EffectCoverflow, Pagination, Navigation];
 
-
 // Slider buttons
 const slider = ref(null);
 const slideLeft = () => {
@@ -193,7 +192,6 @@ onMounted(() => {
 
     <!-- Main Container -->
     <div class="w-full px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10 mx-auto max-w-7xl">
-    
       <!-- Crafting Value Section -->
       <div
         class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 pt-16 sm:pt-24 lg:pt-32"
@@ -253,7 +251,7 @@ onMounted(() => {
       </div>
 
       <!-- Property Section -->
-       <!-- <section class="w-full pt-16 sm:pt-24 lg:pt-32">
+      <!-- <section class="w-full pt-16 sm:pt-24 lg:pt-32">
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold montserrat text-center bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent mb-8 pb-[4px] sm:mb-12"
         >
