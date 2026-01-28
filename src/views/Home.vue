@@ -73,6 +73,15 @@ const goToDetails = (id) => {
   router.push({ name: "property-details", params: { id } });
 };
 
+//sign up tenant
+const istenantOpen = ref(false);
+function tenantModalOpen() {
+  istenantOpen.value = true;
+}
+function tenantModalClose() {
+  istenantOpen.value = false;
+}
+
 onMounted(() => {
   fetchProperties();
   fetchPopularProperties();
@@ -110,12 +119,13 @@ onMounted(() => {
               </svg>
             </div>
 
-            <div
+            <RouterLink
+              to="/"
               class="bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
             >
               <div class="text-sm sm:text-lg lg:text-xl font-extrabold">SERENO</div>
               <div class="text-sm sm:text-lg lg:text-xl font-extrabold">LEVANDE</div>
-            </div>
+            </RouterLink>
           </div>
 
           <!-- center text -->
@@ -153,11 +163,19 @@ onMounted(() => {
             class="absolute top-4 sm:top-6 lg:top-10 right-4 sm:right-6 lg:right-10 flex flex-col sm:flex-row gap-2 sm:gap-4"
           >
             <button
+              @click="tenantModalOpen"
               class="px-3 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent border border-white/30"
             >
               Sign Up as Tenant
             </button>
-
+            <!-- modal for tenant sign up -->
+            <div
+              v-if="istenantOpen"
+              class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+              @click="closeTenantModal"
+            >
+              <div class="bg-white rounded-lg p-6 w-[90%] sm:w-[400px]">df</div>
+            </div>
             <button
               class="w-[160px] sm:w-[180px] lg:w-[200px] h-[34px] sm:h-[40px] rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
             >

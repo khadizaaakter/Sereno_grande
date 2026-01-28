@@ -6,7 +6,7 @@
       <section class="flex items-center justify-between py-4 sm:py-6">
         <div class="flex items-center gap-3 sm:gap-5">
           <Icon icon="lucide:menu" class="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-          <div class="leading-none">
+          <RouterLink to="/" class="leading-none">
             <div
               class="text-sm sm:text-lg font-extrabold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent"
             >
@@ -17,7 +17,7 @@
             >
               LEVANDE
             </div>
-          </div>
+          </RouterLink>
         </div>
         <div class="flex justify-end p-4 items-center gap-3">
           <Icon
@@ -814,6 +814,8 @@ onMounted(() => {
   fetchProperties();
   fetchSingleProperty();
   fetchFAQ();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 </script>
 <style scoped>
