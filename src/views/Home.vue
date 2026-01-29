@@ -73,14 +73,25 @@ const goToDetails = (id) => {
   router.push({ name: "property-details", params: { id } });
 };
 
-//sign up tenant
-const istenantOpen = ref(false);
-function tenantModalOpen() {
-  istenantOpen.value = true;
-}
-function tenantModalClose() {
-  istenantOpen.value = false;
-}
+// modal part
+const showTenantModal = ref(false);
+const showLandlordModal = ref(false);
+
+const openTenantModal = () => {
+  showTenantModal.value = true;
+  document.body.style.overflow = "hidden";
+};
+
+const openLandlordModal = () => {
+  showLandlordModal.value = true;
+  document.body.style.overflow = "hidden";
+};
+
+const closeModal = () => {
+  showTenantModal.value = false;
+  showLandlordModal.value = false;
+  document.body.style.overflow = "auto";
+};
 
 onMounted(() => {
   fetchProperties();
@@ -163,20 +174,14 @@ onMounted(() => {
             class="absolute top-4 sm:top-6 lg:top-10 right-4 sm:right-6 lg:right-10 flex flex-col sm:flex-row gap-2 sm:gap-4"
           >
             <button
-              @click="tenantModalOpen"
+              @click="openTenantModal"
               class="px-3 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] bg-clip-text text-transparent border border-white/30"
             >
               Sign Up as Tenant
             </button>
-            <!-- modal for tenant sign up -->
-            <div
-              v-if="istenantOpen"
-              class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-              @click="closeTenantModal"
-            >
-              <div class="bg-white rounded-lg p-6 w-[90%] sm:w-[400px]">df</div>
-            </div>
+
             <button
+              @click="openLandlordModal"
               class="w-[160px] sm:w-[180px] lg:w-[200px] h-[34px] sm:h-[40px] rounded-lg text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] text-black hover:shadow-lg transition"
             >
               Sign Up as Landlord
@@ -209,6 +214,19 @@ onMounted(() => {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- modal for tenant sign up -->
+    <div
+      v-if="showTenantModal"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+      @click.self="closeModal"
+    >
+      <div class="bg-white w-[90%] max-w-md rounded-xl p-6 relative">
+        <button @click="closeModal" class="absolute top-3 right-3 text-xl">✕</button>
+
+        <h2 class="text-xl font-bold mb-4">Sign Up as Tenant</h2>
       </div>
     </div>
 
@@ -392,7 +410,7 @@ onMounted(() => {
           <div
             v-for="popularProperty in popularProperties"
             :key="popularProperty.id"
-            class="bg-[#0B0F0C] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
+            class="bg-[rgb(11_31_0/0.9)] rounded-xl xs:rounded-2xl overflow-hidden border border-white/5"
           >
             <div class="relative">
               <img
