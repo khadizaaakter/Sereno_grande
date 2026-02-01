@@ -117,10 +117,23 @@ const submitSignUpTenant = async () => {
   } catch (error) {}
 };
 
+// get continent id api
+const continents = ref(""); 
+
+const fetchContinentId = async ()=>{
+  try {
+    const res = await axios.get(`${apiBase}continents`);
+    continents.value = res?.data?.continents;
+  } catch (error) {
+    
+  }
+}
+
 onMounted(() => {
   fetchProperties();
   fetchPopularProperties();
   fetchFAQ();
+  fetchContinentId();
 });
 </script>
 
@@ -305,10 +318,19 @@ onMounted(() => {
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Post Code</label>
-              <input v-model="formTenant.post_code" type="text" placeholder="Enter post
-              code" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              <input v-model="formTenant.post_code" type="text" placeholder="Enter post code" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
               text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
               transition"" />
+            </div>
+            <!-- contient id -->
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Continent Id</label>
+              <select v-model="formTenant.post_code" type="text" placeholder="Select continent" class="bg-[rgb(11_31_0/1)] border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"">
+              <option disabled value="">Select a contient</option>
+              <option v-for="continent in continents" :key="continent.id" :value="continent.id">{{ continent?.name }}</option>
+              </select>
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Website</label>
@@ -319,15 +341,13 @@ onMounted(() => {
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">First Name</label>
-              <input v-model="formTenant.first_name" type="text" placeholder="Enter first
-              name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              <input v-model="formTenant.first_name" type="text" placeholder="Enter first name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
               text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
               transition"" />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Last Name</label>
-              <input v-model="formTenant.last_name" type="text" placeholder="Enter last
-              name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              <input v-model="formTenant.last_name" type="text" placeholder="Enter last name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
               text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
               transition"" />
             </div>
@@ -347,8 +367,7 @@ onMounted(() => {
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Password</label>
-              <input v-model="formTenant.password" type="text" placeholder="Enter
-              password" class="bg-transparent border border-white/30 rounded-[5px] px-3
+              <input v-model="formTenant.password" type="text" placeholder="Enter password" class="bg-transparent border border-white/30 rounded-[5px] px-3
               py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
               transition"" />
             </div>
