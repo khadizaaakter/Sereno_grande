@@ -220,13 +220,174 @@ onMounted(() => {
     <!-- modal for tenant sign up -->
     <div
       v-if="showTenantModal"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
       @click.self="closeModal"
     >
-      <div class="bg-white w-[90%] max-w-md rounded-xl p-6 relative">
-        <button @click="closeModal" class="absolute top-3 right-3 text-xl">✕</button>
+      <div
+        class="bg-[rgb(11_31_0/1)] w-[95%] max-w-2xl rounded-xl p-6 relative max-h-[90vh] overflow-y-auto"
+      >
+        <button @click="closeModal" class="absolute top-3 right-3 text-xl text-white">
+          ✕
+        </button>
 
-        <h2 class="text-xl font-bold mb-4">Sign Up as Tenant</h2>
+        <h2 class="text-xl font-bold mb-1 text-white">Sign Up as Tenant</h2>
+        <p class="text-sm mb-4 text-white/60">Create your Tenant Account</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white">
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Company Name</label>
+            <input type="text" placeholder="Enter company name" class="bg-transparent
+            border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Business Address</label>
+            <input type="text" placeholder="Enter business address" class="bg-transparent
+            border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Address</label>
+            <input type="text" placeholder="Enter Address" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">City</label>
+            <input type="text" placeholder="Enter city" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Country</label>
+            <input type="text" placeholder="Enter country" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Post Code</label>
+            <input type="text" placeholder="Enter post code" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Website</label>
+            <input type="text" placeholder="Enter website" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">First Name</label>
+            <input type="text" placeholder="Enter first name" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Last Name</label>
+            <input type="text" placeholder="Enter last name" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Email</label>
+            <input type="text" placeholder="Enter email" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Phone</label>
+            <input type="text" placeholder="Enter phone" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Password</label>
+            <input type="text" placeholder="Enter password" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-4">
+          <button
+            type="button"
+            class="px-5 py-2 rounded-md border border-white/30 text-white hover:bg-white/10 transition"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="px-6 py-1 rounded-md bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] transition"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal for landlord sign up -->
+    <div
+      v-if="showLandlordModal"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
+      @click.self="closeModal"
+    >
+      <div class="bg-[rgb(11_31_0/1)] w-[95%] max-w-2xl rounded-xl p-6 relative">
+        <button @click="closeModal" class="absolute top-3 right-3 text-xl text-white">
+          ✕
+        </button>
+
+        <h2 class="text-xl font-bold mb-1 text-white">Sign Up as Landlord</h2>
+        <p class="text-sm mb-4 text-white/60">Create your Landlord Account</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white">
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Full Name</label>
+            <input type="text" placeholder="Enter full name" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Email</label>
+            <input type="text" placeholder="Enter email" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Password</label>
+            <input type="text" placeholder="Enter password" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Date of Birth</label>
+            <input type="text" placeholder="Enter date of birth" class="bg-transparent
+            border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium">Address</label>
+            <input type="text" placeholder="Enter address" class="bg-transparent border
+            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
+            focus:border-[#ACFFCB] outline-none transition"" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-4">
+          <button
+            type="button"
+            class="px-5 py-2 rounded-md border border-white/30 text-white hover:bg-white/10 transition"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="px-6 py-1 rounded-md bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] transition"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </div>
 
