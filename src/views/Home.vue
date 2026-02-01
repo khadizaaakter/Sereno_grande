@@ -93,6 +93,30 @@ const closeModal = () => {
   document.body.style.overflow = "auto";
 };
 
+// post api for sign up as tenant
+const formTenant = ref({
+  company_name: "",
+  business_address: "",
+  address: "",
+  city: "",
+  country: "",
+  post_code: "",
+  website: "",
+  first_name: "",
+  last_name: "",
+  email: "",
+  phone: "",
+  password: "",
+
+});
+
+const submitSignUpTenant = async () => {
+  try {
+    const res = await axios.post(`${apiBase}host_register`, formTenant.value);
+    console.log(res);
+  } catch (error) {}
+};
+
 onMounted(() => {
   fetchProperties();
   fetchPopularProperties();
@@ -229,100 +253,121 @@ onMounted(() => {
         <button @click="closeModal" class="absolute top-3 right-3 text-xl text-white">
           ✕
         </button>
-
         <h2 class="text-xl font-bold mb-1 text-white">Sign Up as Tenant</h2>
         <p class="text-sm mb-4 text-white/60">Create your Tenant Account</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white">
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Company Name</label>
-            <input type="text" placeholder="Enter company name" class="bg-transparent
-            border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
+        <form @submit.prevent="submitSignUpTenant">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-white">
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Company Name</label>
+              <input
+                type="text"
+                placeholder="Enter company name"
+                v-model="formTenant.company_name"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
+            </div>
 
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Business Address</label>
-            <input type="text" placeholder="Enter business address" class="bg-transparent
-            border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Business Address</label>
+              <input
+                v-model="formTenant.business_address"
+                type="text"
+                placeholder="Enter business address"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
+            </div>
 
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Address</label>
-            <input type="text" placeholder="Enter Address" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Address</label>
+              <input
+                v-model="formTenant.address"
+                type="text"
+                placeholder="Enter Address"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
+            </div>
 
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">City</label>
-            <input type="text" placeholder="Enter city" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">City</label>
+              <input
+                v-model="formTenant.city"
+                type="text"
+                placeholder="Enter city"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Country</label>
+              <input v-model="formTenant.country" type="text" placeholder="Enter country"
+              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Post Code</label>
+              <input v-model="formTenant.post_code" type="text" placeholder="Enter post
+              code" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Website</label>
+              <input v-model="formTenant.website" type="text" placeholder="Enter website"
+              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">First Name</label>
+              <input v-model="formTenant.first_name" type="text" placeholder="Enter first
+              name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Last Name</label>
+              <input v-model="formTenant.last_name" type="text" placeholder="Enter last
+              name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Email</label>
+              <input v-model="formTenant.email" type="text" placeholder="Enter email"
+              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Phone</label>
+              <input v-model="formTenant.phone" type="text" placeholder="Enter phone"
+              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
+              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Password</label>
+              <input v-model="formTenant.password" type="text" placeholder="Enter
+              password" class="bg-transparent border border-white/30 rounded-[5px] px-3
+              py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
+              transition"" />
+            </div>
           </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Country</label>
-            <input type="text" placeholder="Enter country" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+          <div class="flex justify-end gap-3 mt-4">
+            <button
+              type="button"
+              class="px-5 py-2 rounded-md border border-white/30 text-white hover:bg-white/10 transition"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-6 py-1 rounded-md bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] transition"
+            >
+              Save
+            </button>
           </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Post Code</label>
-            <input type="text" placeholder="Enter post code" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Website</label>
-            <input type="text" placeholder="Enter website" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">First Name</label>
-            <input type="text" placeholder="Enter first name" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Last Name</label>
-            <input type="text" placeholder="Enter last name" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Email</label>
-            <input type="text" placeholder="Enter email" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Phone</label>
-            <input type="text" placeholder="Enter phone" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <label class="text-sm font-medium">Password</label>
-            <input type="text" placeholder="Enter password" class="bg-transparent border
-            border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
-          </div>
-        </div>
-        <div class="flex justify-end gap-3 mt-4">
-          <button
-            type="button"
-            class="px-5 py-2 rounded-md border border-white/30 text-white hover:bg-white/10 transition"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            class="px-6 py-1 rounded-md bg-gradient-to-r from-[#ACFFCB] to-[#85A4D5] transition"
-          >
-            Save
-          </button>
-        </div>
+        </form>
       </div>
     </div>
 
