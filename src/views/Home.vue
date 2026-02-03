@@ -100,14 +100,13 @@ const formTenant = ref({
   address: "",
   city: "",
   country: "",
-  post_code: "",
+  continent: "",
   website: "",
   first_name: "",
   last_name: "",
   email: "",
   phone: "",
   password: "",
-
 });
 
 const submitSignUpTenant = async () => {
@@ -118,22 +117,35 @@ const submitSignUpTenant = async () => {
 };
 
 // get continent id api
-const continents = ref(""); 
+const continents = ref("");
 
-const fetchContinentId = async ()=>{
+const fetchContinentId = async () => {
   try {
     const res = await axios.get(`${apiBase}continents`);
     continents.value = res?.data?.continents;
-  } catch (error) {
-    
+  } catch (error) {}
+};
+
+// get continent wise country
+const wiseCountry = ref("");
+
+const fetchCountry = async (contientId) => {
+  if(!contientId){
+    wiseCountry.value=[];
+    return;
   }
-}
+  try {
+    const res = await axios.get(`${apiBase}continent-wise-country?continent_id=${contientId}`);
+    wiseCountry.value = res?.data?.countries;
+  } catch (error) {}
+};
 
 onMounted(() => {
   fetchProperties();
   fetchPopularProperties();
   fetchFAQ();
   fetchContinentId();
+  fetchCountry();
 });
 </script>
 
@@ -309,67 +321,101 @@ onMounted(() => {
                 class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
               />
             </div>
-            <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium">Country</label>
-              <input v-model="formTenant.country" type="text" placeholder="Enter country"
-              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
-            </div>
-            <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium">Post Code</label>
-              <input v-model="formTenant.post_code" type="text" placeholder="Enter post code" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
-            </div>
+
             <!-- contient id -->
             <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium">Continent Id</label>
-              <select v-model="formTenant.post_code" type="text" placeholder="Select continent" class="bg-[rgb(11_31_0/1)] border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"">
-              <option disabled value="">Select a contient</option>
-              <option v-for="continent in continents" :key="continent.id" :value="continent.id">{{ continent?.name }}</option>
+              <label class="text-sm font-medium">Continent</label>
+              <select
+                v-model="formTenant.continent"
+                @change="fetchCountry(formTenant.continent)"
+                class="bg-[rgb(11_31_0/1)] border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              >
+                <option disabled value="">Select a contient</option>
+                <option
+                  v-for="continent in continents"
+                  :key="continent.id"
+                  :value="continent.id"
+                >
+                  {{ continent?.name }}
+                </option>
               </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Country</label>
+              <select
+                v-model="formTenant.country"
+                :disabled="!wiseCountry.length"
+                class="bg-[rgb(11_31_0/1)] border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              >
+                <option disabled value="">Select Country</option>
+                <option v-for="country in wiseCountry" :key="country?.id" :value="country?.full_name">
+                  {{ country?.full_name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium">Post Code</label>
+              <input
+                type="text"
+                placeholder="Enter post code"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Website</label>
-              <input v-model="formTenant.website" type="text" placeholder="Enter website"
-              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
+              <input
+                v-model="formTenant.website"
+                type="text"
+                placeholder="Enter website"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">First Name</label>
-              <input v-model="formTenant.first_name" type="text" placeholder="Enter first name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
+              <input
+                v-model="formTenant.first_name"
+                type="text"
+                placeholder="Enter first name"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Last Name</label>
-              <input v-model="formTenant.last_name" type="text" placeholder="Enter last name" class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
+              <input
+                v-model="formTenant.last_name"
+                type="text"
+                placeholder="Enter last name"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Email</label>
-              <input v-model="formTenant.email" type="text" placeholder="Enter email"
-              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
+              <input
+                v-model="formTenant.email"
+                type="text"
+                placeholder="Enter email"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Phone</label>
-              <input v-model="formTenant.phone" type="text" placeholder="Enter phone"
-              class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2
-              text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
+              <input
+                v-model="formTenant.phone"
+                type="text"
+                placeholder="Enter phone"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium">Password</label>
-              <input v-model="formTenant.password" type="text" placeholder="Enter password" class="bg-transparent border border-white/30 rounded-[5px] px-3
-              py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none
-              transition"" />
+              <input
+                v-model="formTenant.password"
+                type="text"
+                placeholder="Enter password"
+                class="bg-transparent border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50 focus:border-[#ACFFCB] outline-none transition"
+              />
             </div>
           </div>
           <div class="flex justify-end gap-3 mt-4">
@@ -408,34 +454,34 @@ onMounted(() => {
             <label class="text-sm font-medium">Full Name</label>
             <input type="text" placeholder="Enter full name" class="bg-transparent border
             border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+            focus:border-[#ACFFCB] outline-none transition"/>
           </div>
 
           <div class="flex flex-col gap-1">
             <label class="text-sm font-medium">Email</label>
             <input type="text" placeholder="Enter email" class="bg-transparent border
             border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+            focus:border-[#ACFFCB] outline-none transition" />
           </div>
 
           <div class="flex flex-col gap-1">
             <label class="text-sm font-medium">Password</label>
             <input type="text" placeholder="Enter password" class="bg-transparent border
             border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+            focus:border-[#ACFFCB] outline-none transition"/>
           </div>
 
           <div class="flex flex-col gap-1">
             <label class="text-sm font-medium">Date of Birth</label>
             <input type="text" placeholder="Enter date of birth" class="bg-transparent
             border border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+            focus:border-[#ACFFCB] outline-none transition"/>
           </div>
           <div class="flex flex-col gap-1">
             <label class="text-sm font-medium">Address</label>
             <input type="text" placeholder="Enter address" class="bg-transparent border
             border-white/30 rounded-[5px] px-3 py-2 text-white placeholder-white/50
-            focus:border-[#ACFFCB] outline-none transition"" />
+            focus:border-[#ACFFCB] outline-none transition" />
           </div>
         </div>
         <div class="flex justify-end gap-3 mt-4">
