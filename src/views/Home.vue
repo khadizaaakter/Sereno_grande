@@ -117,7 +117,7 @@ const submitSignUpTenant = async () => {
 };
 
 // get continent id api
-const continents = ref("");
+const continents = ref([]);
 
 const fetchContinentId = async () => {
   try {
@@ -127,7 +127,7 @@ const fetchContinentId = async () => {
 };
 
 // get continent wise country
-const wiseCountry = ref("");
+const wiseCountry = ref([]);
 
 const fetchCountry = async (contientId) => {
   if(!contientId){
